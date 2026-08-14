@@ -6,8 +6,7 @@ import AboutSection from '@/components/sections/AboutSection';
 import SkillsSection from '@/components/sections/SkillsSection';
 import DevTerminal from '@/components/sections/DevTerminal';
 import ProjectsSection from '@/components/sections/ProjectsSection';
-import ExperienceSection from '@/components/sections/ExperienceSection';
-import EducationSection from '@/components/sections/EducationSection';
+import TimelineSection from '@/components/sections/TimelineSection';
 import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/Footer';
 import CursorGlow from '@/components/ui/CursorGlow';
@@ -33,8 +32,7 @@ export default function Home() {
       <SkillsSection />
       <DevTerminal />
       <ProjectsSection />
-      <ExperienceSection />
-      <EducationSection />
+      <TimelineSection />
       <ContactSection />
       <Footer />
     </main>

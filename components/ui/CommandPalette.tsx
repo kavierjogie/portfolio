@@ -52,8 +52,7 @@ export default function CommandPalette() {
     { icon: Hash, title: 'Go to About', subtitle: 'Who I am and my traits', category: 'Navigation', action: () => scrollToSection('about') },
     { icon: Hash, title: 'Go to Skills', subtitle: 'What technologies I use', category: 'Navigation', action: () => scrollToSection('skills') },
     { icon: Hash, title: 'Go to Projects', subtitle: 'Explore things I\'ve built', category: 'Navigation', action: () => scrollToSection('projects') },
-    { icon: Hash, title: 'Go to Experience', subtitle: 'My career and roles', category: 'Navigation', action: () => scrollToSection('experience') },
-    { icon: Hash, title: 'Go to Education', subtitle: 'My academic background', category: 'Navigation', action: () => scrollToSection('education') },
+    { icon: Hash, title: 'Go to Timeline', subtitle: 'My academic & career growth', category: 'Navigation', action: () => scrollToSection('timeline') },
     { icon: Hash, title: 'Go to Contact', subtitle: 'Get in touch with me', category: 'Navigation', action: () => scrollToSection('contact') },
     
     // Actions
