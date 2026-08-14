@@ -89,6 +89,25 @@ export const PROJECTS = [
       challenges: 'Optimizing context windows for long-form meeting note summaries, and engineering highly reliable prompts for deterministic outputs across various daily work tasks.',
     }
   },
+
+  {
+    id: 3,
+    title: 'CareerBuddy SA',
+    description:
+      'An AI-powered career mentor chatbot designed specifically for South African high-school pupils. It helps learners explore career options, understand subject and qualification requirements, discover study opportunities, and make informed career decisions.',
+    tags: ['React', 'TypeScript', 'AI', 'Chatbot', 'Tailwind CSS', 'South African Education'],
+    category: 'AI / Web Application',
+    accent: '#10B981',
+    github: 'https://github.com/kavierjogie/CareerBuddySA',
+    demo: 'https://grade-genius-mentor.lovable.app',
+    featured: true,
+    image: '/projects/CareerBuddy SA.png',
+    details: {
+      overview: 'Designed specifically for South African Grade 9-12 high-school pupils to lower career exploration anxiety. Instead of rigid testing, it uses a conversational "I Have No Idea" mode alongside structured knowledge database guidance on CAPS subjects, APS requirements, funding pathways like NSFAS, and university or TVET college admissions.',
+      architecture: 'Built using React, TypeScript, and Vite on the server-side TanStack Start framework, integrated with Tailwind CSS. Utilizes Supabase for user profile synchronisation and database migrations, paired with @lovable.dev/cloud-auth-js for secure authentication. Integrates the Vercel AI SDK with an OpenAI-compatible API endpoint for dynamic conversational mentoring, and custom speech hooks (useSpeechInput & useReadAloud) leveraging the Web Speech API for voice interactions.',
+      challenges: 'Overcoming the misalignment of standard global LLMs with the South African context (CAPS curriculum, APS scores, NSFAS funding) via specialized context mapping in src/lib/careerbuddy.server.ts. Additionally, solved device-compatibility hurdles for text-to-speech rendering and speech-to-text inputs by structuring robust event wrappers around mobile browser speech synthesis APIs.'
+    }
+  },
 ];
 
 export const EXPERIENCE = [
