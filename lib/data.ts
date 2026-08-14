@@ -63,7 +63,12 @@ export const PROJECTS = [
     github: '#',
     demo: '#',
     featured: true,
-     image: '/projects/Netball App.png'
+    image: '/projects/Netball App.png',
+    details: {
+      overview: 'Designed to help coaching staffs transition from paper-based tracking to real-time digitised dashboards, optimizing player evaluation and strategy during active tournaments.',
+      architecture: 'Utilises Java on Android Studio, communicating with Supabase via REST clients. Local caching matches SQLite. Includes MPAndroidChart for drawing dynamic trends.',
+      challenges: 'Handling concurrent state edits by multiple assistant coaches and compiling data into simple, performant graphs on small mobile displays.',
+    }
   },
 
   {
@@ -77,7 +82,12 @@ export const PROJECTS = [
     github: 'https://github.com/kavierjogie007/intelligent-aid-desk',
     demo: 'https://kavier-jogie-ai-productivity-assistant.lovable.app',
     featured: true,
-    image: '/projects/AI Workplace Productivity Assistant.png'
+    image: '/projects/AI Workplace Productivity Assistant.png',
+    details: {
+      overview: 'An advanced productivity suite designed to act as a personal assistant, minimizing the friction of standard administrative tasks using tailored AI models.',
+      architecture: 'Built using React, TypeScript, and Vite. Leverages advanced prompt engineering techniques and client-side orchestration to fetch API-driven LLM insights.',
+      challenges: 'Optimizing context windows for long-form meeting note summaries, and engineering highly reliable prompts for deterministic outputs across various daily work tasks.',
+    }
   },
 ];
 
