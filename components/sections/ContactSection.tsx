@@ -28,7 +28,7 @@ const CONTACT_METHODS = [
   {
     icon: Github,
     label: 'GitHub',
-    value: 'github.com/kavierjogie007',
+    value: 'github.com/kavierjogie',
     href: PERSONAL.github,
     description: 'See my code',
     accent: '#00BFA5',
@@ -39,32 +39,32 @@ export default function ContactSection() {
   const [status, setStatus] = useState<'idle' | 'sending' | 'sent'>('idle');
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
 
-const handleSubmit = async (e: FormEvent) => {
-  e.preventDefault();
-  setStatus('sending');
+  const handleSubmit = async (e: FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
 
-  try {
-    const res = await fetch("https://formspree.io/f/xwvzyeyj", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(form),
-    });
+    try {
+      const res = await fetch("https://formspree.io/f/xwvzyeyj", {
+        method: "POST",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(form),
+      });
 
-    if (res.ok) {
-      setStatus("sent");
-      setForm({ name: "", email: "", subject: "", message: "" });
-    } else {
+      if (res.ok) {
+        setStatus("sent");
+        setForm({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("idle");
+        alert("Something went wrong. Please try again.");
+      }
+    } catch (error) {
       setStatus("idle");
-      alert("Something went wrong. Please try again.");
+      alert("Network error. Please try again.");
     }
-  } catch (error) {
-    setStatus("idle");
-    alert("Network error. Please try again.");
-  }
-};
+  };
 
   return (
     <SectionWrapper id="contact">

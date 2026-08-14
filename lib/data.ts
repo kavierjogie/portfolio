@@ -3,14 +3,14 @@
 // ============================================================
 
 export const PERSONAL = {
-  name: 'Kavier Jogie',           
+  name: 'Kavier Jogie',
   firstName: 'Kavier',
   role: 'Computer Science Honours Graduate',
   university: 'Nelson Mandela University',
   degree: 'BSc Honours in Computer Science and Information Systems',
-  email: 'kavier.jogie@gmail.com', 
-  github: 'https://github.com/kavierjogie007',
-  linkedin: 'https://linkedin.com/in/kavier-jogie-2a9614319', 
+  email: 'kavier.jogie@gmail.com',
+  github: 'https://github.com/kavierjogie',
+  linkedin: 'https://linkedin.com/in/kavier-jogie-2a9614319',
   cvUrl: '/CV.pdf',                  // ← Place your CV at public/cv.pdf
 };
 
@@ -19,7 +19,7 @@ export const SKILLS = [
   { name: 'Java', category: 'Programming Languages', icon: '☕' },
   { name: 'C#', category: 'Programming Languages', icon: '#' },
   { name: 'Delphi', category: 'Programming Languages', icon: '#' },
-  { name: 'F#',category: 'Programming Languages', icon: '#' },
+  { name: 'F#', category: 'Programming Languages', icon: '#' },
   { name: 'Unity (C#)', category: 'Programming Languages', icon: '🎮' },
   { name: 'Android Development', category: 'Programming Languages', icon: '📱' },
 
