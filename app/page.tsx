@@ -7,6 +7,7 @@ import SkillsSection from '@/components/sections/SkillsSection';
 import DevTerminal from '@/components/sections/DevTerminal';
 import ProjectsSection from '@/components/sections/ProjectsSection';
 import TimelineSection from '@/components/sections/TimelineSection';
+import CertificationsSection from '@/components/sections/CertificationsSection';
 import ContactSection from '@/components/sections/ContactSection';
 import Footer from '@/components/Footer';
 import CursorGlow from '@/components/ui/CursorGlow';
@@ -33,6 +34,7 @@ export default function Home() {
       <DevTerminal />
       <ProjectsSection />
       <TimelineSection />
+      <CertificationsSection />
       <ContactSection />
       <Footer />
     </main>
