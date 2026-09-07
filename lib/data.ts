@@ -108,6 +108,60 @@ export const PROJECTS = [
       challenges: 'Overcoming the misalignment of standard global LLMs with the South African context (CAPS curriculum, APS scores, NSFAS funding) via specialized context mapping in src/lib/careerbuddy.server.ts. Additionally, solved device-compatibility hurdles for text-to-speech rendering and speech-to-text inputs by structuring robust event wrappers around mobile browser speech synthesis APIs.'
     }
   },
+
+  {
+    id: 4,
+    title: 'Social Media Content Studio',
+    description:
+      'An AI-powered content creation suite that transforms single ideas into multi-platform formats including LinkedIn posts, Instagram captions, TikTok scripts, X posts, and content calendars.',
+    tags: ['React', 'Next.js', 'TypeScript', 'Google Gemini', 'Groq AI', 'Tailwind CSS'],
+    category: 'AI / Web Application',
+    accent: '#EC4899',
+    github: 'https://github.com/kavierjogie/social-media-content-studio',
+    demo: 'https://social-media-content-studio-ys32.vercel.app/',
+    featured: true,
+    details: {
+      overview: 'Empowers creators and marketers by turning one seed idea into tailored, platform-ready copy across LinkedIn, Instagram, TikTok, X, and blogs, complete with a built-in content calendar and prompt library.',
+      architecture: 'Built with React, Next.js, and TypeScript styled with Tailwind CSS. Features a multi-provider AI engine leveraging Google Gemini (gemini-2.5-flash) as primary provider with automatic fallback to Groq LLMs (Llama 3.1) and client-side key storage.',
+      challenges: 'Engineered automatic API failover logic between Gemini and Groq model endpoints, with dynamic model selection and prompt optimization for consistent tone across diverse social platforms.',
+    }
+  },
+
+  {
+    id: 5,
+    title: 'Western Cape Public Hospital Feedback System',
+    description:
+      'A production-ready healthcare patient feedback platform built for the Western Cape Department of Health, featuring real-time AI sentiment analysis, hospital KPI dashboards, and automated PDF reporting.',
+    tags: ['Next.js 14', 'TypeScript', 'Supabase', 'PostgreSQL', 'Groq AI', 'Recharts', 'jsPDF'],
+    category: 'Healthcare IT / Web App',
+    accent: '#0284C7',
+    github: 'https://github.com/kavierjogie/wc-hospital-feedback',
+    demo: 'https://wc-hospital-feedback.vercel.app/',
+    featured: true,
+    details: {
+      overview: 'Developed for public healthcare administration to collect patient feedback, run automated AI sentiment analysis and key issue extraction, track facility KPIs, and generate POPIA-compliant monthly reports.',
+      architecture: 'Built with Next.js 14 App Router, TypeScript, and Supabase PostgreSQL with strict Row Level Security (RLS). Integrates Groq SDK for real-time sentiment analysis, Recharts for analytics, jsPDF for report generation, and Vercel Cron for automated background processing.',
+      challenges: 'Designing robust database RLS security policies preventing recursion loops, and creating graceful offline fallback queues so patient feedback is reliably captured even during AI provider downtime.',
+    }
+  },
+
+  {
+    id: 6,
+    title: 'AI Budget Planner',
+    description:
+      'A full-stack personal finance and budgeting web application featuring AI-driven spending pattern analysis, a contextual financial chatbot assistant, savings goal tracking, and recurring expense automation.',
+    tags: ['Next.js 14', 'TypeScript', 'Supabase', 'Groq AI', 'Recharts', 'jsPDF', 'Tailwind CSS'],
+    category: 'FinTech / Web App',
+    accent: '#F59E0B',
+    github: 'https://github.com/kavierjogie/ai-budget-planner',
+    demo: 'https://ai-budget-planner-wine.vercel.app/',
+    featured: true,
+    details: {
+      overview: 'A full-stack financial companion designed for young adults to track income and expenses, receive automated AI insights on spending habits, converse with a financial chatbot assistant, and monitor savings goals.',
+      architecture: 'Leverages Next.js 14 (App Router), TypeScript, and Supabase Auth & PostgreSQL. Uses Groq Cloud LLM APIs for spending insights and chat assistance, Recharts for visual trend forecasting, and jsPDF for monthly spending reports.',
+      challenges: 'Structuring contextual prompts that feed financial history securely to the AI model while preventing hallucinations, and implementing automatic monthly carry-forward logic for recurring expenses.',
+    }
+  },
 ];
 
 export const EXPERIENCE = [
