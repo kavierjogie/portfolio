@@ -63,7 +63,7 @@ export const PROJECTS = [
     github: '#',
     demo: '#',
     featured: true,
-    image: '/projects/Netball App.png',
+    image: '/projects/netball-app.jpg',
     details: {
       overview: 'Designed to help coaching staffs transition from paper-based tracking to real-time digitised dashboards, optimizing player evaluation and strategy during active tournaments.',
       architecture: 'Utilises Java on Android Studio, communicating with Supabase via REST clients. Local caching matches SQLite. Includes MPAndroidChart for drawing dynamic trends.',
@@ -82,7 +82,7 @@ export const PROJECTS = [
     github: 'https://github.com/kavierjogie007/intelligent-aid-desk',
     demo: 'https://kavier-jogie-ai-productivity-assistant.lovable.app',
     featured: true,
-    image: '/projects/AI Workplace Productivity Assistant.png',
+    image: '/projects/ai-productivity-assistant.jpg',
     details: {
       overview: 'An advanced productivity suite designed to act as a personal assistant, minimizing the friction of standard administrative tasks using tailored AI models.',
       architecture: 'Built using React, TypeScript, and Vite. Leverages advanced prompt engineering techniques and client-side orchestration to fetch API-driven LLM insights.',
@@ -101,7 +101,7 @@ export const PROJECTS = [
     github: 'https://github.com/kavierjogie/CareerBuddySA',
     demo: 'https://grade-genius-mentor.lovable.app',
     featured: true,
-    image: '/projects/CareerBuddy SA.png',
+    image: '/projects/careerbuddy-sa.jpg',
     details: {
       overview: 'Designed specifically for South African Grade 9-12 high-school pupils to lower career exploration anxiety. Instead of rigid testing, it uses a conversational "I Have No Idea" mode alongside structured knowledge database guidance on CAPS subjects, APS requirements, funding pathways like NSFAS, and university or TVET college admissions.',
       architecture: 'Built using React, TypeScript, and Vite on the server-side TanStack Start framework, integrated with Tailwind CSS. Utilizes Supabase for user profile synchronisation and database migrations, paired with @lovable.dev/cloud-auth-js for secure authentication. Integrates the Vercel AI SDK with an OpenAI-compatible API endpoint for dynamic conversational mentoring, and custom speech hooks (useSpeechInput & useReadAloud) leveraging the Web Speech API for voice interactions.',
@@ -120,6 +120,7 @@ export const PROJECTS = [
     github: 'https://github.com/kavierjogie/social-media-content-studio',
     demo: 'https://social-media-content-studio-ys32.vercel.app/',
     featured: true,
+    image: '/projects/social-media-content-studio.jpg',
     details: {
       overview: 'Empowers creators and marketers by turning one seed idea into tailored, platform-ready copy across LinkedIn, Instagram, TikTok, X, and blogs, complete with a built-in content calendar and prompt library.',
       architecture: 'Built with React, Next.js, and TypeScript styled with Tailwind CSS. Features a multi-provider AI engine leveraging Google Gemini (gemini-2.5-flash) as primary provider with automatic fallback to Groq LLMs (Llama 3.1) and client-side key storage.',
@@ -138,6 +139,7 @@ export const PROJECTS = [
     github: 'https://github.com/kavierjogie/wc-hospital-feedback',
     demo: 'https://wc-hospital-feedback.vercel.app/',
     featured: true,
+    image: '/projects/wc-hospital-feedback.jpg',
     details: {
       overview: 'Developed for public healthcare administration to collect patient feedback, run automated AI sentiment analysis and key issue extraction, track facility KPIs, and generate POPIA-compliant monthly reports.',
       architecture: 'Built with Next.js 14 App Router, TypeScript, and Supabase PostgreSQL with strict Row Level Security (RLS). Integrates Groq SDK for real-time sentiment analysis, Recharts for analytics, jsPDF for report generation, and Vercel Cron for automated background processing.',
@@ -156,6 +158,7 @@ export const PROJECTS = [
     github: 'https://github.com/kavierjogie/ai-budget-planner',
     demo: 'https://ai-budget-planner-wine.vercel.app/',
     featured: true,
+    image: '/projects/ai-budget-planner.jpg',
     details: {
       overview: 'A full-stack financial companion designed for young adults to track income and expenses, receive automated AI insights on spending habits, converse with a financial chatbot assistant, and monitor savings goals.',
       architecture: 'Leverages Next.js 14 (App Router), TypeScript, and Supabase Auth & PostgreSQL. Uses Groq Cloud LLM APIs for spending insights and chat assistance, Recharts for visual trend forecasting, and jsPDF for monthly spending reports.',
