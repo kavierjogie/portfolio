@@ -26,6 +26,9 @@ function getYear(name: string) {
 
 export default function CertificationsSection() {
   const [activeFilter, setActiveFilter] = useState<CertificationFilter>('All');
+  const visibleFilters = FILTERS.filter(
+    (filter) => filter === 'All' || CERTIFICATIONS.some((cert) => getCategory(cert.name, cert.platform) === filter),
+  );
   const filteredCertifications = CERTIFICATIONS.filter((cert) => {
     return activeFilter === 'All' || getCategory(cert.name, cert.platform) === activeFilter;
   });
@@ -40,7 +43,7 @@ export default function CertificationsSection() {
 
       <div className="mb-8 overflow-x-auto pb-2">
         <div className="flex min-w-max gap-2" role="group" aria-label="Filter certifications by category">
-          {FILTERS.map((filter) => {
+          {visibleFilters.map((filter) => {
             const isActive = activeFilter === filter;
 
             return (
