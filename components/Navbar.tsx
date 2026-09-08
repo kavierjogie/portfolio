@@ -3,8 +3,8 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import Image from 'next/image';
 import { PERSONAL } from '@/lib/data';
+import BrandLockup from '@/components/ui/BrandLockup';
 
 const NAV_LINKS = [
   { label: 'About', href: '#about' },
@@ -39,18 +39,8 @@ export default function Navbar() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 lg:h-20">
             {/* Logo / Name */}
-            <a href="#" className="flex items-center gap-2 font-display font-bold text-lg tracking-tight group">
-              <Image
-                src="/kj-logo.png"
-                alt="KJ monogram"
-                width={24}
-                height={24}
-                className="rounded-sm opacity-90 group-hover:opacity-100 transition-opacity duration-200"
-                priority
-              />
-              <span className="text-text-primary">Jogie</span>
-              <span className="text-accent-cyan">.</span>
-              <span className="text-text-primary">K</span>
+            <a href="#" className="group transition-opacity duration-200 hover:opacity-90" aria-label="Jogie.K home">
+              <BrandLockup />
             </a>
 
             {/* Desktop nav */}
@@ -98,15 +88,8 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed inset-0 z-40 glass-card md:hidden pt-20"
           >
-            <div className="px-6 pb-6 flex items-center gap-2 font-display font-bold text-lg tracking-tight">
-              <Image
-                src="/kj-logo.png"
-                alt="KJ monogram"
-                width={24}
-                height={24}
-                className="rounded-sm"
-              />
-              <span className="text-text-primary">Jogie.K</span>
+            <div className="px-6 pb-6">
+              <BrandLockup compact />
             </div>
             <nav className="flex flex-col gap-1 p-6">
               {NAV_LINKS.map((link, i) => (
