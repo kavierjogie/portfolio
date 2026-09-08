@@ -2,12 +2,12 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Portfolio | CS Student & Mobile Developer',
+  title: 'Jogie.K | CS Student & Mobile Developer',
   description:
     'Computer Science Honours student at Nelson Mandela University specialising in Java, Android Development, and modern software engineering.',
   keywords: ['portfolio', 'computer science', 'android developer', 'java', 'mobile developer', 'NMU'],
   openGraph: {
-    title: 'Portfolio | CS Student & Mobile Developer',
+    title: 'Jogie.K | CS Student & Mobile Developer',
     description: 'Computer Science Honours student at Nelson Mandela University',
     type: 'website',
   },

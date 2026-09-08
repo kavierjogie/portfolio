@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Github, Linkedin, Mail, ArrowUp } from 'lucide-react';
+import Image from 'next/image';
 import { PERSONAL } from '@/lib/data';
 
 export default function Footer() {
@@ -13,10 +14,18 @@ export default function Footer() {
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           {/* Brand */}
           <div>
-            <p className="font-display font-bold text-lg">
-              <span className="text-text-primary">{PERSONAL.firstName}</span>
+            <div className="flex items-center gap-2 font-display font-bold text-lg">
+              <Image
+                src="/kj-logo.png"
+                alt="KJ monogram"
+                width={22}
+                height={22}
+                className="rounded-sm opacity-80"
+              />
+              <span className="text-text-primary">Jogie</span>
               <span className="text-accent-cyan">.</span>
-            </p>
+              <span className="text-text-primary">K</span>
+            </div>
          <p className="text-xs text-text-muted mt-1 font-mono">
   BSc Computer Science Graduate & Mobile Developer
 </p>
