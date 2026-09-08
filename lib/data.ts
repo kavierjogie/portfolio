@@ -52,24 +52,7 @@ export const SKILLS = [
 ];
 
 export const PROJECTS = [
-  {
-    id: 1,
-    title: 'Madibaz Netball Statistics App',
-    description:
-      'A mobile app developed for netball coaches to capture real-time player statistics during matches and provide post-match performance analysis using interactive charts and analytics dashboards.',
-    tags: ['Java', 'Android Studio', 'Supabase', 'MPAndroidChart'],
-    category: 'Mobile App',
-    accent: '#00E5FF',
-    github: '#',
-    demo: '#',
-    featured: true,
-    image: '/projects/netball-app.jpg',
-    details: {
-      overview: 'Designed to help coaching staffs transition from paper-based tracking to real-time digitised dashboards, optimizing player evaluation and strategy during active tournaments.',
-      architecture: 'Utilises Java on Android Studio, communicating with Supabase via REST clients. Local caching matches SQLite. Includes MPAndroidChart for drawing dynamic trends.',
-      challenges: 'Handling concurrent state edits by multiple assistant coaches and compiling data into simple, performant graphs on small mobile displays.',
-    }
-  },
+
 
   {
     id: 2,
@@ -347,8 +330,8 @@ export const TIMELINE: TimelinePhase[] = [
     year: '2025',
     label: '2025 (Honours & Tech Lead)',
     focus: 'Distributed Systems & Leadership',
-    tagline: 'Honours courses, Netball app, and 3rd-year design teams leadership',
-    summary: 'Thrived in Honours level study covering distributed systems and advanced algorithms. Designed and delivered a real-time analytics app for Netball coaches, while taking on multiple student assistant leadership roles.',
+    tagline: 'Honours courses and 3rd-year design teams leadership',
+    summary: 'Thrived in Honours level study covering distributed systems and advanced algorithms. Designed and delivered a real-time analytics app for coaches, while taking on multiple student assistant leadership roles.',
     education: {
       institution: 'Nelson Mandela University',
       qualification: 'Bachelor of Science Honours (BScHons), Computer Science and Information Systems',
