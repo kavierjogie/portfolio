@@ -57,7 +57,7 @@ export default function SkillsSection() {
             key={category}
             variants={fadeUp}
             whileHover={{ borderColor: 'rgba(0,229,255,0.2)' }}
-            className="glass-card rounded-2xl p-6 border border-border-subtle transition-all duration-300"
+            className="glass-card rounded-2xl p-4 sm:p-6 border border-border-subtle transition-all duration-300"
           >
             <CategoryBadge label={category} />
             <div className="space-y-5">

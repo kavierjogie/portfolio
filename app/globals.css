@@ -19,6 +19,7 @@
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 80px;
+  overflow-x: hidden;
 }
 
 body {
@@ -27,6 +28,12 @@ body {
   font-family: var(--font-dm-sans);
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
+  overscroll-behavior-x: none;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Custom scrollbar */

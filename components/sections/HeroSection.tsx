@@ -38,7 +38,7 @@ export default function HeroSection() {
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-center px-4 sm:px-6 lg:px-8 pt-20"
+      className="relative flex flex-col justify-start px-4 pt-28 pb-16 sm:min-h-screen sm:justify-center sm:px-6 sm:pt-20 sm:pb-0 lg:px-8"
     >
       <div className="max-w-7xl mx-auto w-full">
         <div className="max-w-4xl">
@@ -47,7 +47,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-3 py-1.5 mb-8 rounded-full border border-accent-teal/30 bg-accent-teal/5 text-accent-teal text-xs font-mono tracking-widest"
+            className="inline-flex max-w-full items-center gap-2 px-3 py-1.5 mb-6 sm:mb-8 rounded-full border border-accent-teal/30 bg-accent-teal/5 text-[10px] sm:text-xs font-mono tracking-widest"
           >
             <span className="relative flex h-2 w-2">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-teal opacity-75" />
@@ -57,7 +57,7 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Main heading */}
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-6">
+          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight tracking-tight mb-5 sm:mb-6">
             <AnimatedName name={PERSONAL.name} />
             <BlinkCursor />
           </h1>
@@ -67,7 +67,7 @@ export default function HeroSection() {
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 1.4, duration: 0.6 }}
-            className="flex items-center gap-3 mb-8"
+            className="flex items-center gap-3 mb-6 sm:mb-8"
           >
             <div className="h-px w-8 bg-accent-cyan" />
             <p className="font-mono text-accent-cyan text-sm tracking-widest uppercase">
@@ -80,7 +80,7 @@ export default function HeroSection() {
   initial={{ opacity: 0, y: 20 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ delay: 1.6, duration: 0.6 }}
-  className="text-text-secondary text-lg lg:text-xl leading-relaxed max-w-2xl mb-12"
+  className="text-text-secondary text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-12"
 >
   Computer Science graduate at{' '}
   <span className="text-text-primary font-medium">Nelson Mandela University</span>,
@@ -95,11 +95,11 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 1.8, duration: 0.6 }}
-            className="flex flex-wrap gap-4 mb-16"
+            className="flex flex-col gap-3 mb-10 sm:flex-row sm:flex-wrap sm:gap-4 sm:mb-16"
           >
             <a
               href="#projects"
-              className="group relative px-6 py-3 font-display font-semibold text-bg-primary bg-accent-cyan rounded hover:bg-accent-teal transition-all duration-300 clip-tech shadow-cyan-glow"
+              className="group relative w-full px-6 py-3 text-center font-display font-semibold text-bg-primary bg-accent-cyan rounded hover:bg-accent-teal transition-all duration-300 clip-tech shadow-cyan-glow sm:w-auto"
             >
               View Projects
               <span className="ml-2 inline-block transition-transform duration-200 group-hover:translate-x-1">→</span>
@@ -108,7 +108,7 @@ export default function HeroSection() {
             <a
               href={PERSONAL.cvUrl}
               download
-              className="flex items-center gap-2 px-6 py-3 font-display font-semibold text-accent-cyan border border-accent-cyan/40 rounded hover:bg-accent-cyan/10 transition-all duration-300 clip-tech"
+              className="flex w-full items-center justify-center gap-2 px-6 py-3 font-display font-semibold text-accent-cyan border border-accent-cyan/40 rounded hover:bg-accent-cyan/10 transition-all duration-300 clip-tech sm:w-auto"
             >
               <Download size={16} />
               Download CV
@@ -116,7 +116,7 @@ export default function HeroSection() {
 
             <a
               href="#contact"
-              className="px-6 py-3 font-display font-semibold text-text-secondary border border-border-subtle rounded hover:text-text-primary hover:border-text-muted transition-all duration-300"
+              className="w-full px-6 py-3 text-center font-display font-semibold text-text-secondary border border-border-subtle rounded hover:text-text-primary hover:border-text-muted transition-all duration-300 sm:w-auto"
             >
               Contact Me
             </a>
@@ -127,7 +127,7 @@ export default function HeroSection() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 2.0, duration: 0.6 }}
-            className="flex items-center gap-6"
+            className="flex flex-wrap items-center gap-4 sm:gap-6"
           >
             <span className="text-text-muted text-xs font-mono tracking-widest">FIND ME ON</span>
             <div className="flex gap-4">
@@ -157,7 +157,7 @@ export default function HeroSection() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 2.5 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2 text-text-muted"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-2 text-text-muted sm:flex"
       >
         <span className="text-xs font-mono tracking-widest">SCROLL</span>
         <motion.div

@@ -32,7 +32,7 @@ const TRAITS = [
 export default function AboutSection() {
   return (
     <SectionWrapper id="about">
-      <div className="grid lg:grid-cols-2 gap-16 lg:gap-24 items-center">
+      <div className="grid lg:grid-cols-2 gap-12 lg:gap-24 items-center">
         {/* Left: Text */}
         <div>
           <SectionHeading
@@ -94,14 +94,14 @@ export default function AboutSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 gap-4"
+          className="grid grid-cols-2 gap-3 sm:gap-4"
         >
           {TRAITS.map(({ icon: Icon, title, description }, i) => (
             <motion.div
               key={title}
               variants={fadeUp}
               whileHover={{ y: -4, borderColor: 'rgba(0,229,255,0.3)' }}
-              className="glass-card rounded-xl p-5 border border-border-subtle transition-all duration-300 group"
+              className="glass-card rounded-xl p-4 sm:p-5 border border-border-subtle transition-all duration-300 group"
             >
               <div className="w-10 h-10 rounded-lg bg-accent-cyan/10 flex items-center justify-center mb-4 group-hover:bg-accent-cyan/20 transition-colors">
                 <Icon size={20} className="text-accent-cyan" />

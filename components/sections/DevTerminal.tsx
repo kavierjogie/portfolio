@@ -102,7 +102,7 @@ export default function DevTerminal() {
         <h2 className="font-display font-bold text-xl text-text-primary">Interactive Sandbox CLI</h2>
       </div>
 
-      <div className="w-full h-[400px] rounded-2xl glass-card border border-border-subtle flex flex-col overflow-hidden font-mono text-xs shadow-card-hover">
+      <div className="w-full h-[min(400px,65vh)] min-h-[300px] rounded-2xl glass-card border border-border-subtle flex flex-col overflow-hidden font-mono text-xs shadow-card-hover">
         {/* Terminal Header */}
         <div className="bg-bg-elevated px-4 py-3 flex items-center justify-between border-b border-border-subtle select-none">
           <div className="flex items-center gap-2">

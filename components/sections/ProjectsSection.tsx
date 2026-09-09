@@ -71,14 +71,14 @@ export default function ProjectsSection() {
               setActiveTab('overview');
             }}
             whileHover={{ y: -6 }}
-            className="glass-card rounded-2xl p-6 border border-border-subtle hover:border-accent-cyan/30 transition-all duration-300 group flex flex-col cursor-pointer"
+            className="glass-card rounded-2xl p-4 sm:p-6 border border-border-subtle hover:border-accent-cyan/30 transition-all duration-300 group flex flex-col cursor-pointer"
             id={`project-${project.id}`}
           >
             {/* Project Image / Placeholder */}
             {project.image ? (
               <motion.div 
                 layoutId={`card-image-${project.id}`}
-                className="relative h-44 rounded-xl overflow-hidden mb-6 shrink-0"
+                className="relative h-36 sm:h-44 rounded-xl overflow-hidden mb-5 sm:mb-6 shrink-0"
               >
                 <Image
                   src={project.image}
@@ -161,7 +161,7 @@ export default function ProjectsSection() {
             {/* Expanded Modal Box */}
             <motion.div
               onClick={(event) => event.stopPropagation()}
-              className="relative w-full max-w-2xl bg-bg-primary border border-border-subtle rounded-2xl overflow-hidden shadow-card-hover z-10 flex flex-col max-h-[85vh]"
+              className="relative w-full max-w-2xl bg-bg-primary border border-border-subtle rounded-2xl overflow-hidden shadow-card-hover z-10 flex flex-col max-h-[calc(100dvh-1.5rem)] sm:max-h-[85vh]"
             >
               {/* Image banner or decorative top bar */}
               {selectedProject.image ? (
@@ -188,13 +188,14 @@ export default function ProjectsSection() {
               {/* Close Button */}
               <button
                 onClick={closeModal}
+                aria-label="Close project details"
                 className="absolute top-4 right-4 z-20 p-2 bg-black/60 hover:bg-black/90 border border-border-subtle hover:border-accent-cyan text-text-secondary hover:text-accent-cyan rounded-full transition-all duration-200"
               >
                 <X size={18} />
               </button>
 
               {/* Content Panel */}
-              <div className="p-6 md:p-8 overflow-y-auto space-y-6 flex-1">
+              <div className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-5 sm:space-y-6 flex-1 overscroll-contain">
                 <div>
                   <span
                     className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border inline-block mb-3"
@@ -210,7 +211,7 @@ export default function ProjectsSection() {
                 </div>
 
                 {/* Tab select bar */}
-                <div className="flex border-b border-border-subtle gap-4 text-xs font-mono select-none shrink-0">
+                <div className="flex overflow-x-auto border-b border-border-subtle gap-4 text-xs font-mono select-none shrink-0">
                   {[
                     { id: 'overview', label: 'Overview', icon: Cpu },
                     { id: 'architecture', label: 'Architecture', icon: Layers },
@@ -274,7 +275,7 @@ export default function ProjectsSection() {
               </div>
 
               {/* Action bar */}
-              <div className="p-4 bg-bg-elevated/40 border-t border-border-subtle flex gap-4 shrink-0">
+              <div className="p-3 sm:p-4 bg-bg-elevated/40 border-t border-border-subtle flex gap-3 shrink-0">
                 <a
                   href={selectedProject.github}
                   target="_blank"

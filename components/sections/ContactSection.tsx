@@ -127,7 +127,7 @@ export default function ContactSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="glass-card rounded-2xl p-8 border border-border-subtle"
+          className="glass-card rounded-2xl p-4 sm:p-8 border border-border-subtle"
         >
           {status === 'sent' ? (
             <motion.div
@@ -147,7 +147,7 @@ export default function ContactSection() {
             </motion.div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 {['name', 'email'].map((field) => (
                   <div key={field}>
                     <label className="block text-xs font-mono text-text-muted mb-1.5 tracking-wider uppercase">

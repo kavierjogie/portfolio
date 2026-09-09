@@ -14,7 +14,7 @@ interface SectionHeadingProps {
  */
 export default function SectionHeading({ label, title, subtitle }: SectionHeadingProps) {
   return (
-    <div className="mb-16 lg:mb-20">
+    <div className="mb-10 sm:mb-14 lg:mb-20">
       <motion.p
         variants={fadeUp}
         initial="hidden"
@@ -30,7 +30,7 @@ export default function SectionHeading({ label, title, subtitle }: SectionHeadin
         whileInView="show"
         viewport={{ once: true }}
         transition={{ delay: 0.1 }}
-        className="font-display text-4xl lg:text-5xl font-bold text-text-primary leading-tight"
+        className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-text-primary leading-tight"
       >
         {title}
       </motion.h2>
@@ -41,7 +41,7 @@ export default function SectionHeading({ label, title, subtitle }: SectionHeadin
           whileInView="show"
           viewport={{ once: true }}
           transition={{ delay: 0.2 }}
-          className="mt-4 text-text-secondary text-lg max-w-2xl leading-relaxed"
+          className="mt-4 text-text-secondary text-base sm:text-lg max-w-2xl leading-relaxed"
         >
           {subtitle}
         </motion.p>

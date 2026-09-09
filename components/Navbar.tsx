@@ -86,12 +86,12 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-40 glass-card md:hidden pt-20"
+            className="fixed inset-0 z-40 overflow-y-auto glass-card md:hidden pt-20"
           >
-            <div className="px-6 pb-6">
+            <div className="px-6 pb-4">
               <BrandLockup compact />
             </div>
-            <nav className="flex flex-col gap-1 p-6">
+            <nav className="flex flex-col gap-1 px-6 pb-8">
               {NAV_LINKS.map((link, i) => (
                 <motion.a
                   key={link.href}

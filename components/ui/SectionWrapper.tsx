@@ -19,7 +19,7 @@ export default function SectionWrapper({ id, children, className }: SectionWrapp
   const isInView = useInView(ref, { once: true, margin: '-80px 0px' });
 
   return (
-    <section id={id} ref={ref} className={cn('py-24 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto', className)}>
+    <section id={id} ref={ref} className={cn('py-16 sm:py-20 lg:py-32 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto', className)}>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
