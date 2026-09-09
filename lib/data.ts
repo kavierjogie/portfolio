@@ -203,9 +203,13 @@ export interface TimelineTool {
 
 export interface TimelineExperience {
   title: string;
+  organization?: string;
   period: string;
   type: string;
+  location?: string;
+  status?: string;
   description: string;
+  bullets?: string[];
   skills: string[];
   icon: string;
 }
@@ -388,6 +392,40 @@ export const TIMELINE: TimelinePhase[] = [
     focus: 'BSc Honours Graduate',
     tagline: 'Deploying advanced systems and AI workplace products',
     summary: 'Leveraged Honours academic findings to build premium software products including AI assistants and data platforms, moving into full-stack software engineering.',
+    experiences: [
+      {
+        title: 'AI Skills Acceleration Programme Participant',
+        organization: 'CAPACITI',
+        period: 'May 2026',
+        type: 'Programme / Training · On-site',
+        location: 'Cape Town, Western Cape, South Africa',
+        status: 'Training',
+        description: 'Completed CAPACITI\'s intensive AI Skills Acceleration Programme focused on practical AI adoption and workplace digital skills.',
+        bullets: [
+          'Developed hands-on experience with AI tools, prompt engineering, and AI-assisted productivity.',
+          'Applied structured prompting techniques to solve practical workplace and productivity tasks.',
+          'Strengthened digital fluency and workplace readiness by translating AI capabilities into practical use cases.',
+        ],
+        skills: ['Artificial Intelligence (AI)', 'Prompt Engineering', 'Digital Literacy', 'AI Tools'],
+        icon: '🤖',
+      },
+      {
+        title: 'Software Developer Candidate',
+        organization: 'CAPACITI',
+        period: 'Aug 2026 — Present',
+        type: 'Contract · On-site',
+        location: 'Cape Town, Western Cape, South Africa',
+        status: 'Current',
+        description: 'Selected for CAPACITI\'s 12-month Demand Academy, specialising in Software Development.',
+        bullets: [
+          'Developing practical software development skills through structured training, industry mentorship, and real-world project exposure.',
+          'Building hands-on experience with modern software development tools, technologies, and industry best practices.',
+          'Preparing for industry placement through technical training, collaborative projects, and workplace readiness.',
+        ],
+        skills: ['Software Development', 'Artificial Intelligence (AI)', 'Web Development', 'Git / GitHub', 'Programming'],
+        icon: '💻',
+      },
+    ],
     tools: [
       { name: 'React', icon: '⚛️' },
       { name: 'Next.js', icon: '⚡' },

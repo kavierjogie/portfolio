@@ -22,6 +22,8 @@ type TimelineItemData = {
   organization: string;
   date: string;
   meta?: string;
+  location?: string;
+  status?: string;
   description?: string;
   bullets?: string[];
   technologies?: string[];
@@ -34,10 +36,13 @@ function buildTimelineData() {
     (phase.experiences ?? []).map((experience) => ({
       id: `${phase.year}-${experience.title}`,
       title: experience.title,
-      organization: 'Nelson Mandela University',
+      organization: experience.organization ?? 'Nelson Mandela University',
       date: experience.period,
       meta: experience.type,
+      location: experience.location,
+      status: experience.status,
       description: experience.description,
+      bullets: experience.bullets,
       technologies: experience.skills,
       icon: 'work' as const,
     })),
@@ -139,8 +144,16 @@ function TimelineItem({ item, defaultExpanded = false }: { item: TimelineItemDat
           <h4 className="font-display text-sm font-bold leading-snug text-text-primary transition-colors group-hover:text-accent-cyan sm:text-base">
             {item.title}
           </h4>
-          <p className="mt-1 text-xs font-medium text-text-secondary">{item.organization}</p>
+          <div className="mt-1 flex flex-wrap items-center gap-2">
+            <p className="text-xs font-medium text-text-secondary">{item.organization}</p>
+            {item.status && (
+              <span className="rounded-full border border-accent-green/30 bg-accent-green/10 px-2 py-0.5 font-mono text-[9px] uppercase tracking-wider text-accent-green">
+                {item.status}
+              </span>
+            )}
+          </div>
           {item.meta && <p className="mt-1 text-[11px] text-text-muted">{item.meta}</p>}
+          {item.location && <p className="mt-1 text-[11px] text-text-muted">{item.location}</p>}
           <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-text-muted">{item.date}</p>
         </div>
         <ChevronDown
