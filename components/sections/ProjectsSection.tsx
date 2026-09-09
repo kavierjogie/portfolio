@@ -43,9 +43,14 @@ function ProjectImagePlaceholder({ accent, category }: { accent: string; categor
 
 export default function ProjectsSection() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [isClosing, setIsClosing] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'challenges'>('overview');
 
   const selectedProject = PROJECTS.find((p) => p.id === selectedId);
+  const closeModal = () => {
+    setIsClosing(true);
+    setSelectedId(null);
+  };
 
   return (
     <SectionWrapper id="projects">
@@ -61,6 +66,7 @@ export default function ProjectsSection() {
             key={project.id}
             layoutId={`card-container-${project.id}`}
             onClick={() => {
+              setIsClosing(false);
               setSelectedId(project.id);
               setActiveTab('overview');
             }}
@@ -135,27 +141,31 @@ export default function ProjectsSection() {
       </div>
 
       {/* Shared Layout Detail Modal */}
-      <AnimatePresence>
+      <AnimatePresence mode="wait">
         {selectedProject && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10">
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, pointerEvents: 'none' }}
+            className={`fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 md:p-10 ${isClosing ? 'pointer-events-none' : ''}`}
+          >
             {/* Dark Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setSelectedId(null)}
+              onClick={closeModal}
               className="fixed inset-0 bg-black/80 backdrop-blur-md"
             />
 
             {/* Expanded Modal Box */}
             <motion.div
-              layoutId={`card-container-${selectedProject.id}`}
+              onClick={(event) => event.stopPropagation()}
               className="relative w-full max-w-2xl bg-bg-primary border border-border-subtle rounded-2xl overflow-hidden shadow-card-hover z-10 flex flex-col max-h-[85vh]"
             >
               {/* Image banner or decorative top bar */}
               {selectedProject.image ? (
-                <motion.div 
-                  layoutId={`card-image-${selectedProject.id}`}
+                <motion.div
                   className="relative h-60 w-full shrink-0"
                 >
                   <Image
@@ -167,7 +177,7 @@ export default function ProjectsSection() {
                   <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/45 to-transparent" />
                 </motion.div>
               ) : (
-                <motion.div layoutId={`card-image-${selectedProject.id}`} className="shrink-0">
+                <motion.div className="shrink-0">
                   <div
                     className="h-28 w-full"
                     style={{ background: `linear-gradient(135deg, ${selectedProject.accent}15, ${selectedProject.accent}05)` }}
@@ -177,7 +187,7 @@ export default function ProjectsSection() {
 
               {/* Close Button */}
               <button
-                onClick={() => setSelectedId(null)}
+                onClick={closeModal}
                 className="absolute top-4 right-4 z-20 p-2 bg-black/60 hover:bg-black/90 border border-border-subtle hover:border-accent-cyan text-text-secondary hover:text-accent-cyan rounded-full transition-all duration-200"
               >
                 <X size={18} />
@@ -192,8 +202,7 @@ export default function ProjectsSection() {
                   >
                     {selectedProject.category}
                   </span>
-                  <motion.h3 
-                    layoutId={`card-title-${selectedProject.id}`}
+                  <motion.h3
                     className="font-display font-bold text-text-primary text-2xl md:text-3xl leading-tight"
                   >
                     {selectedProject.title}
@@ -220,7 +229,7 @@ export default function ProjectsSection() {
                         {tab.label}
                         {activeTab === tab.id && (
                           <motion.div
-                            layoutId="activeTabIndicator"
+                            layoutId={`activeTabIndicator-${selectedProject.id}`}
                             className="absolute bottom-0 left-0 right-0 h-0.5 bg-accent-cyan"
                           />
                         )}
@@ -285,7 +294,7 @@ export default function ProjectsSection() {
                 </a>
               </div>
             </motion.div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </SectionWrapper>
