@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'Jogie.K | CS Student & Mobile Developer',
+  title: 'Jogie.K | Software Developer',
   description:
     'Computer Science Honours student at Nelson Mandela University specialising in Java, Android Development, and modern software engineering.',
   keywords: ['portfolio', 'computer science', 'android developer', 'java', 'mobile developer', 'NMU'],

@@ -24,8 +24,8 @@ const TRAITS = [
   },
   {
     icon: Users,
-    title: 'Lab Assistant',
-    description: 'Mentoring fellow students in programming labs, building communication and teaching skills.',
+    title: 'Developer in Training',
+    description: 'Currently enrolled in CAPACITI\'s Demand Academy, enhancing full-stack web development and AI integration skills.',
   },
 ];
 
@@ -38,7 +38,7 @@ export default function AboutSection() {
           <SectionHeading
             label="// 01. about"
             title="Who I Am"
-            subtitle="Honours graduate focused on building impactful software and intuitive digital experiences."
+            subtitle="Software Developer Candidate at CAPACITI's Demand Academy, building on a foundation in Computer Science and Information Systems from Nelson Mandela University."
           />
 
           <motion.div
@@ -49,13 +49,11 @@ export default function AboutSection() {
             className="space-y-4 text-text-secondary leading-relaxed"
           >
            {[
-  `I am a Bachelor of Science Honours graduate in Computer Science and Information Systems from Nelson Mandela University, with a strong focus on mobile development, software engineering, and data-driven problem solving. I thrive at the intersection of clean code, thoughtful design, and analytical thinking.`,
+  `I hold a BSc Honours in Computer Science and Information Systems from Nelson Mandela University, with a background spanning mobile development, software engineering, and data-driven problem solving. I now bring that foundation into CAPACITI's 12-month Demand Academy in Cape Town, where I'm deepening my skills across full-stack web development, AI integration, and modern engineering practices through structured training, industry mentorship, and real-world project exposure.`,
 
-  `My core work involves building Android applications in Java, designing intuitive user experiences, and exploring how data mining techniques can uncover meaningful insights. I bring the same level of discipline and creativity to both academic research and real-world software development.`,
+  `My project work reflects where I'm headed — I've built AI-powered web applications using React, Next.js, TypeScript, and Supabase, and I'm particularly drawn to the intersection of clean architecture, thoughtful UX, and practical AI. I approach every project with the same discipline I developed through academic research and four semesters of lab assistance at NMU.`,
 
-  `Beyond development, I worked as a lab assistant where I guided students through programming concepts and practical challenges. Teaching strengthened my technical communication and problem-solving abilities while reinforcing my passion for continuous learning.`,
-
-  `I am actively seeking graduate opportunities, internships, and junior developer roles where I can contribute to impactful projects, collaborate with talented teams, and continue growing as a software engineer.`,
+  `I'm preparing for industry placement through CAPACITI and am open to collaborations, junior opportunities, and projects where I can contribute meaningfully and keep growing.`,
             ].map((para, i) => (
               <motion.p key={i} variants={fadeUp}>
                 {para}
@@ -70,13 +68,14 @@ export default function AboutSection() {
             viewport={{ once: true }}
             className="mt-8 flex flex-wrap gap-3"
           >
-            {['Java','Android',
-  'C#',
+            {['React','Next.js',
+  'TypeScript',
+  'Tailwind CSS',
+  'Java',
+  'Android',
   'Supabase',
-  'Firebase',
-  'SQLite',
-  'F#',
-  'UI/UX'
+  'AI Integration',
+  'Git',
 ].map((tag) => (
               <span
                 key={tag}
