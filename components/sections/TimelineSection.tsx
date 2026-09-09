@@ -249,7 +249,7 @@ export default function TimelineSection() {
 
       <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-10 lg:gap-16">
         <TimelineColumn title="Work Experience" items={work} icon={BriefcaseBusiness} />
-        <TimelineColumn title="Education & Certifications" items={education} icon={GraduationCap} />
+        <TimelineColumn title="Education" items={education} icon={GraduationCap} />
       </div>
     </SectionWrapper>
   );

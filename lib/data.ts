@@ -11,7 +11,7 @@ export const PERSONAL = {
   email: 'kavier.jogie@gmail.com',
   github: 'https://github.com/kavierjogie',
   linkedin: 'https://linkedin.com/in/kavier-jogie-2a9614319',
-  cvUrl: '/CV.pdf',                  // ← Place your CV at public/cv.pdf
+  cvUrl: '/Kavier Jogie CV.pdf',                  // ← Place your CV at public/cv.pdf
 };
 
 export const SKILLS = [
