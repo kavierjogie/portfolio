@@ -5,7 +5,7 @@
 export const PERSONAL = {
   name: 'Kavier Jogie',
   firstName: 'Kavier',
-  role: 'Computer Science Honours Graduate',
+  role: 'Software Developer',
   university: 'Nelson Mandela University',
   degree: 'BSc Honours in Computer Science and Information Systems',
   email: 'kavier.jogie@gmail.com',
