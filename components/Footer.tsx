@@ -16,7 +16,7 @@ export default function Footer() {
           <div>
             <BrandLockup compact />
             <p className="mt-1 font-mono text-xs text-text-muted">
-              BSc Computer Science Graduate & Mobile Developer
+              Software Developer | CAPACITI Demand Academy
             </p>
           </div>
 
