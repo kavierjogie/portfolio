@@ -1,320 +1,229 @@
 'use client';
 
-import { useState, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
-import { GraduationCap, Briefcase, Calendar, MapPin, Code, ChevronRight } from 'lucide-react';
-import SectionWrapper from '@/components/ui/SectionWrapper';
+import { useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import {
+  Award,
+  BookOpen,
+  BriefcaseBusiness,
+  ChevronDown,
+  ExternalLink,
+  GraduationCap,
+  Wrench,
+} from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
-import { TIMELINE } from '@/lib/data';
+import SectionWrapper from '@/components/ui/SectionWrapper';
+import { CERTIFICATIONS, TIMELINE } from '@/lib/data';
 import { cn } from '@/lib/utils';
 
+type TimelineItemData = {
+  id: string;
+  title: string;
+  organization: string;
+  date: string;
+  meta?: string;
+  description?: string;
+  bullets?: string[];
+  technologies?: string[];
+  link?: string;
+  icon: 'work' | 'education' | 'certification';
+};
+
+function buildTimelineData() {
+  const work: TimelineItemData[] = TIMELINE.flatMap((phase) =>
+    (phase.experiences ?? []).map((experience) => ({
+      id: `${phase.year}-${experience.title}`,
+      title: experience.title,
+      organization: 'Nelson Mandela University',
+      date: experience.period,
+      meta: experience.type,
+      description: experience.description,
+      technologies: experience.skills,
+      icon: 'work' as const,
+    })),
+  ).reverse();
+
+  const educationByKey = new Map<string, TimelineItemData>();
+  TIMELINE.forEach((phase) => {
+    if (!phase.education) return;
+
+    const education = phase.education;
+    const key = `${education.institution}-${education.qualification}-${education.period}`;
+    const existing = educationByKey.get(key);
+    const phaseDescription = `${phase.label}: ${phase.summary}`;
+    const modules = [...(education.modules ?? [])];
+
+    if (existing) {
+      existing.description = `${existing.description} ${phaseDescription}`;
+      existing.bullets = Array.from(new Set([...(existing.bullets ?? []), ...modules]));
+      existing.technologies = Array.from(new Set([...(existing.technologies ?? []), ...phase.tools.map((tool) => tool.name)]));
+    } else {
+      educationByKey.set(key, {
+        id: key,
+        title: education.qualification,
+        organization: education.institution,
+        date: education.period,
+        meta: education.location,
+        description: phaseDescription,
+        bullets: education.activities ? [education.activities, ...modules] : modules,
+        technologies: phase.tools.map((tool) => tool.name),
+        icon: 'education',
+      });
+    }
+  });
+
+  const education = Array.from(educationByKey.values()).reverse();
+  const certifications: TimelineItemData[] = CERTIFICATIONS.map((certification) => ({
+    id: certification.name,
+    title: certification.name,
+    organization: `${certification.issuer} · ${certification.platform}`,
+    date: 'Credential',
+    link: certification.verification,
+    icon: 'certification',
+  }));
+
+  return { work, education: [...education, ...certifications] };
+}
+
+function TimelineItem({ item, defaultExpanded = false }: { item: TimelineItemData; defaultExpanded?: boolean }) {
+  const [isExpanded, setIsExpanded] = useState(defaultExpanded);
+  const detailsId = `${item.id.replace(/[^a-zA-Z0-9]+/g, '-').toLowerCase()}-details`;
+  const Icon = item.icon === 'work' ? BriefcaseBusiness : item.icon === 'education' ? BookOpen : Award;
+
+  const toggle = () => setIsExpanded((expanded) => !expanded);
+
+  return (
+    <article
+      role="button"
+      tabIndex={0}
+      aria-expanded={isExpanded}
+      aria-controls={detailsId}
+      onClick={toggle}
+      onKeyDown={(event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault();
+          toggle();
+        }
+      }}
+      className={cn(
+        'group relative ml-5 cursor-pointer rounded-2xl border border-transparent py-1 pl-7 pr-2 outline-none transition-all duration-300',
+        'hover:border-border-subtle/70 hover:bg-bg-elevated/30 focus-visible:border-accent-cyan/60 focus-visible:bg-bg-elevated/30',
+      )}
+    >
+      <span
+        aria-hidden="true"
+        className={cn(
+          'absolute -left-[7px] top-4 flex h-3.5 w-3.5 items-center justify-center rounded-full border-2 border-bg-primary bg-accent-cyan shadow-[0_0_12px_rgba(0,229,255,0.6)] transition-all duration-300',
+          isExpanded && 'scale-125 bg-accent-green shadow-[0_0_16px_rgba(16,185,129,0.65)]',
+        )}
+      />
+
+      <div className="flex items-start gap-3">
+        <div className="mt-0.5 hidden h-8 w-8 shrink-0 items-center justify-center rounded-lg border border-accent-cyan/15 bg-accent-cyan/5 text-accent-cyan sm:flex">
+          <Icon size={15} strokeWidth={1.8} />
+        </div>
+        <div className="min-w-0 flex-1">
+          <h4 className="font-display text-sm font-bold leading-snug text-text-primary transition-colors group-hover:text-accent-cyan sm:text-base">
+            {item.title}
+          </h4>
+          <p className="mt-1 text-xs font-medium text-text-secondary">{item.organization}</p>
+          {item.meta && <p className="mt-1 text-[11px] text-text-muted">{item.meta}</p>}
+          <p className="mt-1 font-mono text-[10px] uppercase tracking-wider text-text-muted">{item.date}</p>
+        </div>
+        <ChevronDown
+          aria-hidden="true"
+          size={17}
+          className={cn('mt-2 shrink-0 text-text-muted transition-transform duration-300', isExpanded && 'rotate-180 text-accent-cyan')}
+        />
+      </div>
+
+      <AnimatePresence initial={false}>
+        {isExpanded && (
+          <motion.div
+            id={detailsId}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="space-y-3 pb-3 pl-0 pt-4 text-xs leading-relaxed text-text-secondary sm:pl-11">
+              {item.description && <p>{item.description}</p>}
+
+              {item.bullets && item.bullets.length > 0 && (
+                <ul className="space-y-1.5">
+                  {item.bullets.map((bullet) => (
+                    <li key={bullet} className="flex items-start gap-2">
+                      <span className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-accent-cyan" />
+                      <span>{bullet}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              {item.technologies && item.technologies.length > 0 && (
+                <div className="flex flex-wrap items-center gap-1.5 pt-1">
+                  <Wrench size={13} className="mr-1 text-accent-cyan" />
+                  {item.technologies.map((technology) => (
+                    <span key={technology} className="rounded-md border border-border-subtle bg-bg-primary/60 px-2 py-1 font-mono text-[10px] text-text-secondary">
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {item.link && (
+                <a
+                  href={item.link}
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={(event) => event.stopPropagation()}
+                  className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-accent-cyan underline-offset-4 hover:underline"
+                >
+                  View credential <ExternalLink size={12} />
+                </a>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </article>
+  );
+}
+
+function TimelineColumn({ title, items, icon: ColumnIcon }: { title: string; items: TimelineItemData[]; icon: typeof BriefcaseBusiness }) {
+  return (
+    <div className="min-w-0">
+      <div className="mb-7 flex items-center gap-3">
+        <div className="flex h-9 w-9 items-center justify-center rounded-xl border border-accent-cyan/20 bg-accent-cyan/5 text-accent-cyan">
+          <ColumnIcon size={17} />
+        </div>
+        <h3 className="font-display text-lg font-bold text-text-primary">{title}</h3>
+      </div>
+
+      <div className="relative space-y-3 border-l border-accent-cyan/20 pb-2">
+        {items.map((item, index) => (
+          <TimelineItem key={item.id} item={item} defaultExpanded={title === 'Work Experience' && index === 0} />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function TimelineSection() {
-  const [activeYearIndex, setActiveYearIndex] = useState<number>(TIMELINE.length - 2); // Start with 2025 (Honours & Tech Lead Focus)
-  const containerRef = useRef<HTMLDivElement>(null);
-
-  // Scroll linked animation setup for the timeline path line
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ['start center', 'end center'],
-  });
-
-  const scaleY = useSpring(scrollYProgress, {
-    stiffness: 80,
-    damping: 15,
-    restDelta: 0.001,
-  });
-
-  const activePhase = TIMELINE[activeYearIndex];
+  const { work, education } = buildTimelineData();
 
   return (
     <SectionWrapper id="timeline" className="relative">
       <SectionHeading
-        label="// 04. academic growth timeline"
+        label="// 04. career timeline"
         title="My Journey & Growth"
-        subtitle="An interactive roadmap of my education, academic leadership roles, and technical development at Nelson Mandela University and beyond."
+        subtitle="A concise view of my experience, education, and credentials. Select any entry to explore the details."
       />
 
-      <div ref={containerRef} className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 relative min-h-[550px]">
-        
-        {/* Left Side: Timeline Navigation Nodes (Desktop: 4 cols, Mobile: Top row) */}
-        <div className="lg:col-span-4 flex flex-col items-stretch justify-start relative">
-          
-          {/* Desktop Vertical Path */}
-          <div className="hidden lg:block absolute left-[31px] top-6 bottom-6 w-0.5 bg-border-subtle/50 rounded-full">
-            <motion.div
-              style={{ scaleY, originY: 0 }}
-              className="w-full h-full bg-gradient-to-b from-accent-cyan via-accent-blue to-accent-purple rounded-full shadow-[0_0_12px_#00E5FF]"
-            />
-          </div>
-
-          {/* Desktop Navigation Nodes */}
-          <div className="hidden lg:flex flex-col gap-6 relative z-10">
-            {TIMELINE.map((phase, idx) => {
-              const isActive = idx === activeYearIndex;
-              const isPast = idx < activeYearIndex;
-
-              return (
-                <button
-                  key={phase.year}
-                  onClick={() => setActiveYearIndex(idx)}
-                  className="flex items-center gap-6 group text-left outline-none cursor-pointer"
-                >
-                  {/* Node Circle */}
-                  <motion.div
-                    animate={{
-                      scale: isActive ? 1.25 : 1,
-                      borderColor: isActive
-                        ? '#00E5FF'
-                        : isPast
-                        ? 'rgba(0, 229, 255, 0.4)'
-                        : 'rgba(30, 45, 61, 0.8)',
-                    }}
-                    transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-                    className={cn(
-                      'w-16 h-16 rounded-2xl flex items-center justify-center shrink-0 border-2 bg-bg-primary transition-all duration-300',
-                      isActive 
-                        ? 'shadow-[0_0_15px_rgba(0,229,255,0.25)] border-accent-cyan bg-bg-elevated' 
-                        : 'border-border-subtle group-hover:border-accent-cyan/60'
-                    )}
-                  >
-                    <span className={cn(
-                      'font-display font-bold text-sm tracking-tight transition-colors',
-                      isActive ? 'text-accent-cyan' : 'text-text-secondary group-hover:text-text-primary'
-                    )}>
-                      {phase.year}
-                    </span>
-                  </motion.div>
-
-                  {/* Phase Summary Label */}
-                  <div className="flex-1">
-                    <p className={cn(
-                      'text-xs font-mono tracking-wider transition-colors',
-                      isActive ? 'text-accent-cyan' : 'text-text-muted group-hover:text-text-secondary'
-                    )}>
-                      {phase.label}
-                    </p>
-                    <h4 className={cn(
-                      'font-display font-semibold text-base mt-0.5 leading-snug transition-colors',
-                      isActive ? 'text-text-primary' : 'text-text-secondary group-hover:text-text-primary'
-                    )}>
-                      {phase.focus}
-                    </h4>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          {/* Mobile Horizontal Timeline Nav */}
-          <div className="lg:hidden w-full overflow-x-auto pb-4 scrollbar-none flex gap-4 snap-x relative z-10">
-            {/* Background line running behind mobile nodes */}
-            <div className="absolute left-4 right-4 top-6 h-0.5 bg-border-subtle/40 -z-10" />
-            
-            {TIMELINE.map((phase, idx) => {
-              const isActive = idx === activeYearIndex;
-              return (
-                <button
-                  key={phase.year}
-                  onClick={() => setActiveYearIndex(idx)}
-                  className="snap-center shrink-0 flex flex-col items-center gap-2 focus:outline-none cursor-pointer"
-                >
-                  <motion.div
-                    animate={{
-                      scale: isActive ? 1.15 : 1,
-                      borderColor: isActive ? '#00E5FF' : 'rgba(30, 45, 61, 0.8)',
-                    }}
-                    className={cn(
-                      'w-12 h-12 rounded-xl border-2 flex items-center justify-center bg-bg-primary',
-                      isActive ? 'border-accent-cyan bg-bg-elevated shadow-cyan-glow' : 'border-border-subtle'
-                    )}
-                  >
-                    <span className={cn(
-                      'font-display font-bold text-xs',
-                      isActive ? 'text-accent-cyan' : 'text-text-secondary'
-                    )}>
-                      {phase.year}
-                    </span>
-                  </motion.div>
-                  <span className={cn(
-                    'text-[10px] font-mono whitespace-nowrap',
-                    isActive ? 'text-accent-cyan font-semibold' : 'text-text-muted'
-                  )}>
-                    {phase.year === '2021' ? 'Matric' : phase.year === '2026' ? 'Graduate' : `BSc Y${parseInt(phase.year) - 2021}`}
-                  </span>
-                </button>
-              );
-            })}
-          </div>
-
-        </div>
-
-        {/* Right Side: Active Phase Details Display (Desktop: 8 cols, Mobile: Full width) */}
-        <div className="lg:col-span-8 flex flex-col">
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={activeYearIndex}
-              initial={{ opacity: 0, x: 20 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-              className="glass-card rounded-3xl p-6 md:p-8 border border-border-subtle relative overflow-hidden flex flex-col h-full justify-between"
-            >
-              {/* Background ambient radial glow depending on the year category */}
-              <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-accent-cyan/5 blur-3xl pointer-events-none" />
-              <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-accent-purple/5 blur-3xl pointer-events-none" />
-
-              <div>
-                {/* Section Header */}
-                <div className="flex flex-col md:flex-row md:items-center justify-between gap-3 border-b border-border-subtle/50 pb-6 mb-6">
-                  <div>
-                    <span className="text-xs font-mono text-accent-cyan tracking-widest uppercase">
-                      Phase Focus — {activePhase.year}
-                    </span>
-                    <h3 className="font-display font-bold text-text-primary text-2xl md:text-3xl mt-1 leading-snug">
-                      {activePhase.tagline}
-                    </h3>
-                  </div>
-                  <div className="px-4 py-1.5 rounded-full border border-accent-cyan/20 bg-accent-cyan/5 text-accent-cyan font-mono text-xs font-semibold self-start md:self-center shrink-0">
-                    {activePhase.label}
-                  </div>
-                </div>
-
-                {/* Summary Text */}
-                <p className="text-text-secondary text-sm md:text-base leading-relaxed mb-6">
-                  {activePhase.summary}
-                </p>
-
-                {/* Content Details Grid */}
-                <div className="space-y-6">
-                  
-                  {/* Education details */}
-                  {activePhase.education && (
-                    <motion.div 
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="border border-border-subtle/80 bg-bg-elevated/30 rounded-2xl p-5"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className="p-2.5 rounded-xl bg-accent-cyan/10 border border-accent-cyan/20 text-accent-cyan shrink-0">
-                          <GraduationCap size={20} />
-                        </div>
-                        <div className="flex-1">
-                          <span className="text-[10px] font-mono text-text-muted uppercase tracking-wider">Education</span>
-                          <h5 className="font-display font-bold text-text-primary text-lg mt-0.5">
-                            {activePhase.education.institution}
-                          </h5>
-                          <p className="text-accent-cyan text-sm mt-0.5">
-                            {activePhase.education.qualification}
-                          </p>
-                          <div className="flex items-center gap-4 mt-2.5 text-xs text-text-secondary font-mono">
-                            <span className="flex items-center gap-1">
-                              <Calendar size={12} className="text-text-muted" />
-                              {activePhase.education.period}
-                            </span>
-                            <span className="flex items-center gap-1">
-                              <MapPin size={12} className="text-text-muted" />
-                              {activePhase.education.location}
-                            </span>
-                          </div>
-
-                          {/* Modules List */}
-                          {activePhase.education.modules && (
-                            <div className="mt-4 pt-4 border-t border-border-subtle/40">
-                              <span className="text-[10px] font-mono text-text-muted uppercase tracking-wider block mb-2">
-                                Modules & Focus Areas
-                              </span>
-                              <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
-                                {activePhase.education.modules.map((mod) => (
-                                  <div key={mod} className="flex items-center gap-1.5 text-xs text-text-secondary font-mono">
-                                    <ChevronRight size={12} className="text-accent-cyan/60 shrink-0" />
-                                    <span className="truncate">{mod}</span>
-                                  </div>
-                                ))}
-                              </div>
-                            </div>
-                          )}
-                        </div>
-                      </div>
-                    </motion.div>
-                  )}
-
-                  {/* Experiences list */}
-                  {activePhase.experiences && activePhase.experiences.length > 0 && (
-                    <div className="space-y-4">
-                      {activePhase.experiences.map((exp) => (
-                        <motion.div
-                          key={exp.title}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="border border-border-subtle/80 bg-bg-elevated/30 rounded-2xl p-5"
-                        >
-                          <div className="flex items-start gap-4">
-                            <div className="p-2.5 rounded-xl bg-accent-blue/10 border border-accent-blue/20 text-accent-blue shrink-0">
-                              <Briefcase size={20} />
-                            </div>
-                            <div className="flex-1">
-                              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-1">
-                                <div>
-                                  <span className="text-[10px] font-mono text-text-muted uppercase tracking-wider">Academic Assistant Role</span>
-                                  <h5 className="font-display font-bold text-text-primary text-base mt-0.5">
-                                    {exp.title}
-                                  </h5>
-                                </div>
-                                <span className="text-[10px] font-mono text-text-secondary bg-bg-elevated px-2 py-0.5 rounded border border-border-subtle self-start sm:self-center shrink-0">
-                                  {exp.period}
-                                </span>
-                              </div>
-                              <p className="text-text-secondary text-xs leading-relaxed mt-2.5">
-                                {exp.description}
-                              </p>
-                              
-                              {/* Skills developed */}
-                              <div className="flex flex-wrap gap-1.5 mt-3.5">
-                                {exp.skills.map((skill) => (
-                                  <span
-                                    key={skill}
-                                    className="text-[9px] font-mono text-text-muted bg-bg-primary/60 px-2 py-0.5 rounded border border-border-subtle hover:text-accent-cyan transition-colors"
-                                  >
-                                    {skill}
-                                  </span>
-                                ))}
-                              </div>
-                            </div>
-                          </div>
-                        </motion.div>
-                      ))}
-                    </div>
-                  )}
-
-                </div>
-              </div>
-
-              {/* Tools learned in this year (Badges) */}
-              <div className="mt-8 pt-6 border-t border-border-subtle/50">
-                <div className="flex items-center gap-2 mb-3">
-                  <Code size={16} className="text-accent-cyan" />
-                  <span className="text-xs font-mono uppercase tracking-wider text-text-secondary">
-                    Primary Tools & Languages Mastered in {activePhase.year}
-                  </span>
-                </div>
-                <div className="flex flex-wrap gap-2.5">
-                  {activePhase.tools.map((tool) => (
-                    <motion.div
-                      key={tool.name}
-                      whileHover={{ scale: 1.06, borderColor: 'rgba(0, 229, 255, 0.4)' }}
-                      className="flex items-center gap-1.5 px-3 py-1 bg-bg-elevated border border-border-subtle rounded-xl text-xs font-medium text-text-primary shadow-sm hover:shadow-cyan-glow/10 transition-shadow cursor-default"
-                    >
-                      <span className="text-sm shrink-0">{tool.icon}</span>
-                      <span>{tool.name}</span>
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-
-            </motion.div>
-          </AnimatePresence>
-        </div>
-
+      <div className="grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-10 lg:gap-16">
+        <TimelineColumn title="Work Experience" items={work} icon={BriefcaseBusiness} />
+        <TimelineColumn title="Education & Certifications" items={education} icon={GraduationCap} />
       </div>
     </SectionWrapper>
   );
