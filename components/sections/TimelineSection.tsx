@@ -73,7 +73,20 @@ function buildTimelineData() {
   });
 
   const education = Array.from(educationByKey.values()).reverse();
-  const certifications: TimelineItemData[] = CERTIFICATIONS.map((certification) => ({
+  const excludedTimelineCertifications = new Set([
+    'Google AI Essentials',
+    'Working with the OpenAI API',
+    'Introduction to Power BI',
+    'Introduction to GitHub Concepts',
+    'AI for Project Managers',
+    'AI for Software Engineering',
+    'AI for Business Analysts',
+    'AI Skills Fest 2026',
+  ]);
+
+  const certifications: TimelineItemData[] = CERTIFICATIONS.filter(
+    (certification) => !excludedTimelineCertifications.has(certification.name),
+  ).map((certification) => ({
     id: certification.name,
     title: certification.name,
     organization: `${certification.issuer} · ${certification.platform}`,
