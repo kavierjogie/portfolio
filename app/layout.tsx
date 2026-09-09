@@ -6,12 +6,27 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: 'Jogie.K | Software Developer',
+
   description:
-    'Computer Science Honours student at Nelson Mandela University specialising in Java, Android Development, and modern software engineering.',
-  keywords: ['portfolio', 'computer science', 'android developer', 'java', 'mobile developer', 'NMU'],
+    'Software Developer Candidate at CAPACITI, specialising in full-stack web development, AI integration, and modern software engineering.',
+
+  keywords: [
+    'portfolio',
+    'software developer',
+    'full-stack developer',
+    'AI integration',
+    'web development',
+    'CAPACITI',
+    'Java',
+    'TypeScript',
+    'React',
+    'Next.js',
+  ],
+
   openGraph: {
     title: 'Jogie.K | Software Developer',
-    description: 'Computer Science Honours student at Nelson Mandela University',
+    description:
+      'Software Developer Candidate at CAPACITI, specialising in full-stack web development, AI integration, and modern software engineering.',
     type: 'website',
   },
 };
