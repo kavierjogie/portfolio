@@ -436,6 +436,13 @@ export interface Certification {
 
 export const CERTIFICATIONS: Certification[] = [
   {
+    name: 'Artificial Intelligence Bootcamp (AI)',
+    issuer: 'Coursera',
+    platform: 'Coursera',
+    verification: 'https://www.coursera.org/account/accomplishments/badge/R_8od5V_StW_KHeVf2rVoA',
+    earned: 'September 9, 2026',
+  },
+  {
     name: 'Google AI Essentials',
     issuer: 'Google',
     platform: 'Coursera',
