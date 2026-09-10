@@ -43,13 +43,6 @@ export const SECONDARY_SKILLS = [
   { name: 'Unity', icon: '🎮' },
 ];
 
-export const PRODUCTIVITY_TOOLS = [
-  'Microsoft Word',
-  'Microsoft Excel',
-  'Microsoft PowerPoint',
-  'Microsoft Visio',
-];
-
 export const PROJECTS = [
 
 

@@ -53,7 +53,7 @@ export default function HeroSection() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent-teal opacity-75" />
               <span className="relative inline-flex rounded-full h-2 w-2 bg-accent-teal" />
             </span>
-            AVAILABLE FOR INTERNSHIPS & JUNIOR ROLES
+            OPEN TO JUNIOR SOFTWARE DEVELOPMENT ROLES
           </motion.div>
 
           {/* Main heading */}
