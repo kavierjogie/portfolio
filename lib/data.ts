@@ -75,7 +75,6 @@ export const PROJECTS = [
     accent: '#10B981',
     github: 'https://github.com/kavierjogie/CareerBuddySA',
     demo: 'https://grade-genius-mentor.lovable.app',
-    featured: true,
     image: '/projects/careerbuddy-sa.png',
     details: {
       overview: 'Designed specifically for South African Grade 9-12 high-school pupils to lower career exploration anxiety. Instead of rigid testing, it uses a conversational "I Have No Idea" mode alongside structured knowledge database guidance on CAPS subjects, APS requirements, funding pathways like NSFAS, and university or TVET college admissions.',
@@ -94,7 +93,6 @@ export const PROJECTS = [
     accent: '#EC4899',
     github: 'https://github.com/kavierjogie/social-media-content-studio',
     demo: 'https://social-media-content-studio-ys32.vercel.app/',
-    featured: true,
     image: '/projects/social-media-content-studio.png',
     details: {
       overview: 'Empowers creators and marketers by turning one seed idea into tailored, platform-ready copy across LinkedIn, Instagram, TikTok, X, and blogs, complete with a built-in content calendar and prompt library.',
