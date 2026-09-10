@@ -20,10 +20,6 @@ function getCategory(name: string, platform: string): Exclude<CertificationFilte
   return 'Development';
 }
 
-function getYear(name: string) {
-  return name.match(/\b20\d{2}\b/)?.[0] ?? '—';
-}
-
 export default function CertificationsSection() {
   const [activeFilter, setActiveFilter] = useState<CertificationFilter>('All');
   const visibleFilters = FILTERS.filter(
@@ -89,33 +85,40 @@ export default function CertificationsSection() {
               href={cert.verification}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex min-h-[214px] flex-col rounded-xl border border-accent-teal/25 bg-bg-card/90 p-5 transition-all duration-300 hover:border-accent-cyan/70 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan/70"
+              className="group flex min-h-[204px] flex-col rounded-xl border border-border-subtle/80 bg-bg-card/90 p-4 transition-all duration-300 hover:-translate-y-1 hover:border-accent-cyan/60 hover:bg-bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent-cyan/70 sm:p-5"
             >
-            <div className="flex items-start justify-between gap-4">
-              <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-accent-teal/25 bg-accent-teal/10 text-accent-cyan">
-                <Award size={18} strokeWidth={1.8} aria-hidden="true" />
-              </span>
-              <ExternalLink size={16} className="mt-1 text-text-muted transition-colors group-hover:text-accent-cyan" aria-hidden="true" />
-            </div>
+              <div className="flex items-start justify-between gap-4">
+                <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-accent-teal/30 bg-accent-teal/10 text-accent-cyan transition-colors group-hover:border-accent-cyan/40 group-hover:bg-accent-cyan/10">
+                  <Award size={19} strokeWidth={1.8} aria-hidden="true" />
+                </span>
+                <ExternalLink size={16} className="mt-1 text-text-muted transition-colors group-hover:text-accent-cyan" aria-hidden="true" />
+              </div>
 
-            <div className="mt-5 min-w-0">
-              <h3 className="break-words font-display text-base font-semibold leading-snug text-text-primary">
+              <div className="mt-4 min-w-0">
+                <h3 className="break-words font-display text-lg font-semibold leading-tight text-text-primary">
                 {cert.name}
-              </h3>
-              <p className="mt-2 text-xs leading-relaxed text-text-secondary">
-                {cert.issuer} <span className="text-text-muted">· {cert.platform}</span>
-              </p>
-            </div>
+                </h3>
+                <p className="mt-2 text-xs leading-relaxed text-text-secondary">
+                  <span className="font-medium text-text-primary/90">{cert.issuer}</span>
+                  <span className="mx-1.5 text-text-muted">·</span>
+                  {cert.platform}
+                </p>
+              </div>
 
-            <div className="mt-auto flex items-center justify-between gap-3 pt-5 text-[11px]">
-              <span className="rounded-full border border-accent-teal/25 bg-accent-teal/10 px-2.5 py-1 font-medium text-accent-teal">
-                {category}
-              </span>
-              <span className="flex items-center gap-1.5 text-text-muted" aria-label={`Year ${getYear(cert.name)}`}>
-                <CalendarDays size={13} aria-hidden="true" />
-                {getYear(cert.name)}
-              </span>
-            </div>
+              <div className="mt-auto flex items-end justify-between gap-3 border-t border-border-subtle/70 pt-4 text-[11px]">
+                <span className="rounded-full border border-accent-teal/25 bg-accent-teal/10 px-2.5 py-1 font-medium text-accent-teal">
+                  {category}
+                </span>
+                {cert.earned && (
+                  <span className="flex flex-col items-end gap-0.5 text-text-muted" aria-label={`Date earned ${cert.earned}`}>
+                    <span className="flex items-center gap-1.5 uppercase tracking-wider text-[9px] text-text-muted/80">
+                      <CalendarDays size={12} aria-hidden="true" />
+                      Earned
+                    </span>
+                    <span className="font-medium text-text-secondary">{cert.earned}</span>
+                  </span>
+                )}
+              </div>
             </motion.a>
             );
           })}

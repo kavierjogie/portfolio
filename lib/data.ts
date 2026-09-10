@@ -15,40 +15,39 @@ export const PERSONAL = {
 };
 
 export const SKILLS = [
-  // Programming Languages
-  { name: 'Java', category: 'Programming Languages', icon: '☕' },
-  { name: 'C#', category: 'Programming Languages', icon: '#' },
-  { name: 'Delphi', category: 'Programming Languages', icon: '#' },
-  { name: 'F#', category: 'Programming Languages', icon: '#' },
-  { name: 'Unity (C#)', category: 'Programming Languages', icon: '🎮' },
-  { name: 'Android Development', category: 'Programming Languages', icon: '📱' },
-
-  // IDEs
-  { name: 'IntelliJ IDEA', category: 'IDEs', icon: '💡' },
-  { name: 'Android Studio', category: 'IDEs', icon: '📱' },
-  { name: 'Visual Studio', category: 'IDEs', icon: '🖥️' },
-  { name: 'RStudio', category: 'IDEs', icon: '📊' },
-  { name: 'Embarcadero RAD Studio', category: 'IDEs', icon: '🧰' },
-  { name: 'Unity', category: 'IDEs', icon: '🎮' },
-
-  // Data Analysis / Engineering
-  { name: 'R', category: 'Data Analysis', icon: '📈' },
-  { name: 'MATLAB', category: 'Data Analysis', icon: '📊' },
-
-  // Productivity Tools
-  { name: 'Microsoft Word', category: 'Productivity', icon: '📄' },
-  { name: 'Microsoft Excel', category: 'Productivity', icon: '📊' },
-  { name: 'Microsoft PowerPoint', category: 'Productivity', icon: '📽️' },
-  { name: 'Microsoft Visio', category: 'Productivity', icon: '📐' },
-
-  // Databases
+  { name: 'TypeScript', category: 'Languages & Frameworks', icon: 'TS' },
+  { name: 'JavaScript', category: 'Languages & Frameworks', icon: 'JS' },
+  { name: 'React', category: 'Languages & Frameworks', icon: '⚛' },
+  { name: 'Next.js', category: 'Languages & Frameworks', icon: '▲' },
+  { name: 'Java', category: 'Languages & Frameworks', icon: '☕' },
+  { name: 'C#', category: 'Languages & Frameworks', icon: '#' },
+  { name: 'AI Integration', category: 'AI & Data', icon: '✦' },
+  { name: 'Supabase', category: 'AI & Data', icon: '⚡' },
+  { name: 'R', category: 'AI & Data', icon: '📈' },
+  { name: 'MATLAB', category: 'AI & Data', icon: '📊' },
   { name: 'SQL Server', category: 'Databases', icon: '🗄️' },
   { name: 'Microsoft Access', category: 'Databases', icon: '🗃️' },
   { name: 'Supabase', category: 'Databases', icon: '⚡' },
+  { name: 'Git', category: 'Tools & Version Control', icon: '🔀' },
+  { name: 'GitHub', category: 'Tools & Version Control', icon: '🐙' },
+  { name: 'Android Studio', category: 'Tools & Version Control', icon: '📱' },
+  { name: 'Visual Studio', category: 'Tools & Version Control', icon: '🖥️' },
+  { name: 'IntelliJ IDEA', category: 'Tools & Version Control', icon: '💡' },
+];
 
-  // Version Control
-  { name: 'Git', category: 'Version Control', icon: '🔀' },
-  { name: 'GitHub', category: 'Version Control', icon: '🐙' },
+export const SECONDARY_SKILLS = [
+  { name: 'Delphi', icon: '#' },
+  { name: 'F#', icon: '#' },
+  { name: 'Embarcadero RAD Studio', icon: '🧰' },
+  { name: 'RStudio', icon: '📊' },
+  { name: 'Unity', icon: '🎮' },
+];
+
+export const PRODUCTIVITY_TOOLS = [
+  'Microsoft Word',
+  'Microsoft Excel',
+  'Microsoft PowerPoint',
+  'Microsoft Visio',
 ];
 
 export const PROJECTS = [
@@ -416,7 +415,7 @@ export const TIMELINE: TimelinePhase[] = [
         type: 'Contract · On-site',
         location: 'Cape Town, Western Cape, South Africa',
         status: 'Current',
-        description: 'Selected for CAPACITI\'s 12-month Demand Academy, specialising in Software Development.',
+        description: "CAPACITI's Demand Academy is a 12-month structured software development programme that combines technical training with industry mentorship and placement.",
         bullets: [
           'Developing practical software development skills through structured training, industry mentorship, and real-world project exposure.',
           'Building hands-on experience with modern software development tools, technologies, and industry best practices.',
@@ -441,6 +440,7 @@ export interface Certification {
   issuer: string; // e.g., "Google" or "DataCamp"
   platform: string; // issuing platform, for display purposes
   verification: string; // URL to the credential
+  earned?: string;
 }
 
 export const CERTIFICATIONS: Certification[] = [

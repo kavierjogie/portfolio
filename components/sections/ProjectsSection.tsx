@@ -71,7 +71,7 @@ export default function ProjectsSection() {
               setActiveTab('overview');
             }}
             whileHover={{ y: -6 }}
-            className="glass-card rounded-2xl p-4 sm:p-6 border border-border-subtle hover:border-accent-cyan/30 transition-all duration-300 group flex flex-col cursor-pointer"
+            className="glass-card rounded-2xl p-4 sm:p-6 border border-border-subtle hover:border-accent-cyan/30 transition-all duration-300 group flex flex-col cursor-pointer md:last:col-span-2"
             id={`project-${project.id}`}
           >
             {/* Project Image / Placeholder */}

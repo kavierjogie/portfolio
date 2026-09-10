@@ -82,13 +82,18 @@ export default function HeroSection() {
   transition={{ delay: 1.6, duration: 0.6 }}
   className="text-text-secondary text-base sm:text-lg lg:text-xl leading-relaxed max-w-2xl mb-8 sm:mb-12"
 >
-  Software Developer Candidate at{' '}
-  <span className="text-text-primary font-medium">CAPACITI</span>, building{' '}
-  <span className="text-text-primary font-medium">full-stack web applications</span>{' '}
-  and <span className="text-text-primary font-medium">AI-powered tools</span> on a
-  foundation in Computer Science from{' '}
-  <span className="text-text-primary font-medium">Nelson Mandela University</span>.
+  <span className="text-text-primary font-medium">
+    BSc Honours in Computer Science
+  </span>{' '}
+  · Nelson Mandela University
+  <br />
+  Building{' '}
+  <span className="text-text-primary font-medium">
+    full-stack and AI-integrated applications
+  </span>{' '}
+  at CAPACITI&apos;s Demand Academy, Cape Town.
 </motion.p>
+
 
           {/* CTA Buttons */}
           <motion.div

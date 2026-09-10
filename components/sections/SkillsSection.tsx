@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import SectionHeading from '@/components/ui/SectionHeading';
-import { SKILLS } from '@/lib/data';
+import { PRODUCTIVITY_TOOLS, SECONDARY_SKILLS, SKILLS } from '@/lib/data';
 import { staggerContainer, fadeUp } from '@/lib/utils';
 
 /* Group skills by category */
@@ -72,6 +72,11 @@ export default function SkillsSection() {
           </motion.div>
         ))}
       </motion.div>
+
+      <p className="mt-6 text-xs text-text-secondary">
+        Also worked with: {SECONDARY_SKILLS.map((skill) => skill.name).join(', ')}.
+        {' '}Productivity: {PRODUCTIVITY_TOOLS.join(', ')}.
+      </p>
     </SectionWrapper>
   );
 }

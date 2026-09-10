@@ -74,7 +74,7 @@ export default function ContactSection() {
         subtitle="Open to internships, junior roles, and interesting collaborations. I&apos;d love to hear from you."
       />
 
-      <div className="grid lg:grid-cols-2 gap-12 lg:gap-16">
+      <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
         {/* Left: contact methods */}
         <motion.div
           variants={staggerContainer}

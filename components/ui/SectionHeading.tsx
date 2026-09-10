@@ -14,7 +14,7 @@ interface SectionHeadingProps {
  */
 export default function SectionHeading({ label, title, subtitle }: SectionHeadingProps) {
   return (
-    <div className="mb-10 sm:mb-14 lg:mb-20">
+    <div className="mb-8 sm:mb-10 lg:mb-14">
       <motion.p
         variants={fadeUp}
         initial="hidden"

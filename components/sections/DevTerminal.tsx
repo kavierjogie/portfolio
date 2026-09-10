@@ -96,7 +96,7 @@ export default function DevTerminal() {
   };
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
+    <section className="py-12 sm:py-16 lg:py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto">
       <div className="flex items-center gap-2 mb-6">
         <Terminal className="text-accent-cyan" size={22} />
         <h2 className="font-display font-bold text-xl text-text-primary">Interactive Sandbox CLI</h2>
