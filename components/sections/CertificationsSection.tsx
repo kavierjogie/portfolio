@@ -32,7 +32,7 @@ export default function CertificationsSection() {
   return (
     <SectionWrapper id="certifications">
       <SectionHeading
-        label="// 04. certifications"
+        label="// 05. certifications"
         title="Certifications & Credentials"
         subtitle="Continual learning across AI, software engineering, data analytics, and project management."
       />

@@ -79,6 +79,7 @@ function buildTimelineData() {
 
   const education = Array.from(educationByKey.values()).reverse();
   const excludedTimelineCertifications = new Set([
+    'Artificial Intelligence Bootcamp (AI)',
     'Google AI Essentials',
     'Working with the OpenAI API',
     'Introduction to Power BI',

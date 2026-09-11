@@ -22,13 +22,19 @@ export default function Footer() {
 
           {/* Nav links */}
           <div className="flex flex-wrap gap-6 text-xs font-mono text-text-muted">
-            {['about', 'skills', 'projects', 'experience', 'contact'].map((link) => (
+            {[
+              { label: 'about', href: '#about' },
+              { label: 'skills', href: '#skills' },
+              { label: 'projects', href: '#projects' },
+              { label: 'Timeline', href: '#timeline' },
+              { label: 'contact', href: '#contact' },
+            ].map(({ label, href }) => (
               <a
-                key={link}
-                href={`#${link}`}
+                key={label}
+                href={href}
                 className="hover:text-accent-cyan transition-colors capitalize"
               >
-                {link}
+                {label}
               </a>
             ))}
           </div>
