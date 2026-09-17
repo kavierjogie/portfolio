@@ -47,6 +47,24 @@ export const PROJECTS = [
 
 
   {
+    id: 7,
+    title: 'Smart Pantry & Recipe Assistant',
+    description:
+      'A smart kitchen management app that tracks pantry inventory, flags low-stock and soon-to-expire items, and recommends recipes based on what you already have. Includes dietary preference filtering and an auto-generated shopping list.',
+    tags: ['React', 'TypeScript', 'AI', 'Recipe API', 'Tailwind CSS'],
+    category: 'Web App',
+    accent: '#16A34A',
+    github: 'https://github.com/kavierjogie/smart-pantry',
+    demo: 'https://smart-pantry-kohl.vercel.app/',
+    image: '/projects/smart-pantry.jpg',
+    details: {
+      overview: 'Helps households reduce food waste and simplify meal planning by tracking pantry inventory in real time, surfacing items that are running low or expiring soon, and recommending recipes tailored to dietary preferences using what is already on hand.',
+      architecture: 'Built with React and TypeScript, styled with Tailwind CSS. Pulls recipe data from a recipe API and matches it against live pantry stock to power personalized "cook tonight" suggestions, with automated shopping list generation for missing ingredients.',
+      challenges: 'Designing inventory logic that accurately surfaces expiring and low-stock items, and matching available pantry ingredients against recipe requirements to generate relevant, dietary-aware recommendations.',
+    }
+  },
+
+  {
     id: 2,
     title: 'AI Workplace Productivity Assistant',
     description:
