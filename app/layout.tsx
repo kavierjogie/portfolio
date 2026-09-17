@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 // have a declaration for CSS side-effect imports in some configurations.
 // @ts-ignore -- handled by Next.js' CSS loader
 import './globals.css';
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: 'Jogie.K | Software Developer',
@@ -36,6 +37,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en" className="dark">
       <body className="font-body bg-bg-primary text-text-primary antialiased">
         {children}
+        <Analytics />
       </body>
     </html>
   );
