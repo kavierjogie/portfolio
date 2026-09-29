@@ -74,7 +74,7 @@ export default function ContactSection() {
         subtitle="Open to internships, junior roles, and interesting collaborations. I&apos;d love to hear from you."
       />
 
-      <div className="grid lg:grid-cols-2 gap-10 lg:gap-14">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-10 lg:gap-14">
         {/* Left: contact methods */}
         <motion.div
           variants={staggerContainer}
@@ -91,27 +91,27 @@ export default function ContactSection() {
               target="_blank"
               rel="noopener noreferrer"
               whileHover={{ x: 6, borderColor: `${accent}40` }}
-              className="flex items-center gap-5 glass-card rounded-xl p-5 border border-border-subtle transition-all duration-300 group"
+              className="flex items-center gap-3 sm:gap-5 glass-card rounded-xl p-4 sm:p-5 border border-border-subtle transition-all duration-300 group"
             >
               <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
+                className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl flex items-center justify-center shrink-0 transition-all duration-300"
                 style={{ background: `${accent}15`, border: `1px solid ${accent}30` }}
               >
                 <Icon size={20} style={{ color: accent }} />
               </div>
               <div className="flex-1 min-w-0">
                 <p className="text-xs text-text-muted mb-0.5">{description}</p>
-                <p className="font-medium text-text-primary group-hover:text-accent-cyan transition-colors truncate">
+                <p className="font-medium text-text-primary group-hover:text-accent-cyan transition-colors text-sm sm:text-base break-words">
                   {value}
                 </p>
               </div>
-              <span className="text-text-muted group-hover:text-accent-cyan text-lg transition-colors">↗</span>
+              <span className="shrink-0 text-text-muted group-hover:text-accent-cyan text-lg transition-colors">↗</span>
             </motion.a>
           ))}
 
           <motion.div
             variants={fadeUp}
-            className="p-5 rounded-xl border border-border-subtle bg-bg-elevated"
+            className="p-4 sm:p-5 rounded-xl border border-border-subtle bg-bg-elevated"
           >
             <p className="text-xs font-mono text-text-muted mb-2 tracking-widest">RESPONSE TIME</p>
             <p className="text-text-secondary text-sm leading-relaxed">
@@ -219,7 +219,7 @@ export default function ContactSection() {
 
               <p className="text-xs text-center text-text-muted">
                 Or email directly:{' '}
-                <a href={`mailto:${PERSONAL.email}`} className="text-accent-cyan hover:underline">
+                <a href={`mailto:${PERSONAL.email}`} className="text-accent-cyan hover:underline break-all">
                   {PERSONAL.email}
                 </a>
               </p>
