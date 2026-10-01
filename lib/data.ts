@@ -103,19 +103,19 @@ export const PROJECTS = [
 
   {
     id: 4,
-    title: 'Social Media Content Studio',
+    title: 'Fanout',
     description:
-      'An AI-powered content creation suite that transforms single ideas into multi-platform formats including LinkedIn posts, Instagram captions, TikTok scripts, X posts, and content calendars.',
-    tags: ['React', 'Next.js', 'TypeScript', 'Google Gemini', 'Groq AI', 'Tailwind CSS'],
+      'An AI-powered content platform that fans one idea out into platform-ready content — LinkedIn posts, Instagram captions, TikTok scripts, X posts, blog articles, promo copy, and hashtags — with a built-in prompt library and content calendar.',
+    tags: ['React', 'TypeScript', 'Vite', 'Groq AI', 'Vercel Functions', 'Tailwind CSS'],
     category: 'AI / Web Application',
     accent: '#EC4899',
-    github: 'https://github.com/kavierjogie/social-media-content-studio',
-    demo: 'https://social-media-content-studio-ys32.vercel.app/',
-    image: '/projects/social-media-content-studio.png',
+    github: 'https://github.com/kavierjogie/fanout-studio',
+    demo: 'https://fanout-studio.vercel.app/',
+    image: '/projects/fanout.png',
     details: {
-      overview: 'Empowers creators and marketers by turning one seed idea into tailored, platform-ready copy across LinkedIn, Instagram, TikTok, X, and blogs, complete with a built-in content calendar and prompt library.',
-      architecture: 'Built with React, Next.js, and TypeScript styled with Tailwind CSS. Features a multi-provider AI engine leveraging Google Gemini (gemini-2.5-flash) as primary provider with automatic fallback to Groq LLMs (Llama 3.1) and client-side key storage.',
-      challenges: 'Engineered automatic API failover logic between Gemini and Groq model endpoints, with dynamic model selection and prompt optimization for consistent tone across diverse social platforms.',
+      overview: 'Fanout helps creators and marketers turn a single idea into tailored content for every platform. The workflow runs topic → platforms → tone → output, and users can transform existing posts into new formats, start from a categorised prompt library, browse and edit past content, schedule it on a content calendar, and track activity on a dashboard.',
+      architecture: 'A React 18 + TypeScript single-page app built with Vite and styled with Tailwind CSS. Generation runs through a Vercel serverless function that calls the Groq API (openai/gpt-oss-20b by default, configurable via environment variable), so the API key never reaches the browser. Generated content is persisted client-side in localStorage, and platform metadata and prompt templates live in a dedicated data layer, which makes adding new platforms simple.',
+      challenges: 'Writing per-platform prompting rules that keep one consistent voice while meeting each platform\'s format, length, and hashtag conventions. Moving AI calls behind a server-side route to secure credentials without slowing down the client, and designing a lightweight local persistence model that supports search, filtering, editing, and calendar scheduling without a backend database.',
     }
   },
 
