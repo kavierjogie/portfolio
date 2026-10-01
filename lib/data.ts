@@ -48,19 +48,19 @@ export const PROJECTS = [
 
   {
     id: 7,
-    title: 'Smart Pantry & Recipe Assistant',
+    title: 'Smart Pantry',
     description:
-      'A smart kitchen management app that tracks pantry inventory, flags low-stock and soon-to-expire items, and recommends recipes based on what you already have. Includes dietary preference filtering and an auto-generated shopping list.',
-    tags: ['React', 'TypeScript', 'AI', 'Recipe API', 'Tailwind CSS'],
-    category: 'Web App',
+      'A full-stack food management app that tracks pantry stock and expiry dates, matches recipes to the ingredients you already have, and includes an AI food assistant that gives pantry-aware meal advice. Also covers shopping lists, stock insights, and cookbook discovery, with a one-click demo mode.',
+    tags: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'Groq AI', 'TheMealDB API', 'Recharts', 'Tailwind CSS'],
+    category: 'Full-Stack / AI Web App',
     accent: '#16A34A',
     github: 'https://github.com/kavierjogie/smart-pantry',
     demo: 'https://smart-pantry-kohl.vercel.app/',
     image: '/projects/smart-pantry.jpg',
     details: {
-      overview: 'Helps households reduce food waste and simplify meal planning by tracking pantry inventory in real time, surfacing items that are running low or expiring soon, and recommending recipes tailored to dietary preferences using what is already on hand.',
-      architecture: 'Built with React and TypeScript, styled with Tailwind CSS. Pulls recipe data from a recipe API and matches it against live pantry stock to power personalized "cook tonight" suggestions, with automated shopping list generation for missing ingredients.',
-      challenges: 'Designing inventory logic that accurately surfaces expiring and low-stock items, and matching available pantry ingredients against recipe requirements to generate relevant, dietary-aware recommendations.',
+      overview: 'Helps households cut food waste and plan meals around what they already own. Users track pantry items with quantities, expiry dates, and low-stock thresholds, then get recipes ranked by how many ingredients they already have and can add missing ingredients to a shopping list in one click. An AI assistant gives meal ideas, substitutions, and budget tips grounded in the user\'s pantry, dietary preferences, and allergies. A dashboard and insights view chart stock health and expiring items, and a cookbook browser rounds it out.',
+      architecture: 'Built with Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS, and Radix UI. Supabase provides authentication and PostgreSQL storage, with Row Level Security on every table and middleware-based route protection. Server-side API routes proxy TheMealDB for recipe search, Open Library for cookbooks, and Groq (gpt-oss-120b) for the chat assistant, so API keys stay on the server. Recharts powers the insights charts, and a cookie-flagged demo mode runs entirely on seeded localStorage data so visitors can try the app without signing up.',
+      challenges: 'Scoring recipe matches against loosely named pantry items in mixed units (fuzzy name matching plus unit normalisation) and deriving dietary tags (vegan, dairy-free, gluten-free) from raw ingredient lists, since the recipe API does not provide them. Writing a system prompt that keeps the AI grounded in real pantry and allergy data without inventing items or prices. Building a demo mode that bypasses Supabase cleanly across middleware, API routes, and the data layer.',
     }
   },
 
