@@ -104,15 +104,18 @@ export default function ProjectsSection() {
               </motion.div>
             )}
 
-            <div className="flex items-center justify-between mb-3">
+            <div className="flex flex-wrap items-center gap-2 mb-3">
+              <span className="whitespace-nowrap text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border border-border-subtle text-text-secondary bg-bg-elevated">
+                {project.platform === 'Android' ? '📱 Android' : '🌐 Web'}
+              </span>
               <span
-                className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border"
+                className="whitespace-nowrap text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border"
                 style={{ color: project.accent, borderColor: `${project.accent}40`, background: `${project.accent}10` }}
               >
                 {project.category}
               </span>
               {project.featured && (
-                <span className="text-[10px] font-mono tracking-widest text-accent-teal">
+                <span className="ml-auto whitespace-nowrap text-[10px] font-mono tracking-widest text-accent-teal">
                   ★ FEATURED
                 </span>
               )}
@@ -141,9 +144,48 @@ export default function ProjectsSection() {
               ))}
             </div>
 
-            <span className="text-xs font-semibold text-accent-cyan flex items-center gap-1 mt-auto">
-              Read Technical Case Study &rarr;
-            </span>
+            {/* Direct links so recruiters don't have to open the modal */}
+            <div className="flex items-center gap-2 mt-auto" onClick={(e) => e.stopPropagation()}>
+              {project.demoVideo ? (
+                <button
+                  type="button"
+                  onClick={() => setVideoSrc(project.demoVideo!)}
+                  className="flex items-center gap-1.5 text-xs font-semibold rounded-lg py-2 px-3 transition-all duration-200"
+                  style={{ color: project.accent, background: `${project.accent}15`, border: `1px solid ${project.accent}30` }}
+                >
+                  <Play size={13} /> Watch Demo
+                </button>
+              ) : (
+                <a
+                  href={project.demo}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1.5 text-xs font-semibold rounded-lg py-2 px-3 transition-all duration-200"
+                  style={{ color: project.accent, background: `${project.accent}15`, border: `1px solid ${project.accent}30` }}
+                >
+                  <ExternalLink size={13} /> Live Demo
+                </a>
+              )}
+              <a
+                href={project.github}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center gap-1.5 text-xs font-semibold text-text-secondary hover:text-text-primary border border-border-subtle hover:border-text-muted rounded-lg py-2 px-3 transition-all duration-200"
+              >
+                <Github size={13} /> GitHub
+              </a>
+              <button
+                type="button"
+                onClick={() => {
+                  setIsClosing(false);
+                  setSelectedId(project.id);
+                  setActiveTab('overview');
+                }}
+                className="ml-auto text-xs font-semibold text-accent-cyan hover:underline"
+              >
+                Case Study &rarr;
+              </button>
+            </div>
           </motion.div>
         ))}
       </div>

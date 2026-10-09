@@ -53,6 +53,7 @@ export const PROJECTS = [
       'A full-stack food management app that tracks pantry stock and expiry dates, matches recipes to the ingredients you already have, and includes an AI food assistant that gives pantry-aware meal advice. Also covers shopping lists, stock insights, and cookbook discovery, with a one-click demo mode.',
     tags: ['Next.js 16', 'React 19', 'TypeScript', 'Supabase', 'Groq AI', 'TheMealDB API', 'Recharts', 'Tailwind CSS'],
     category: 'Full-Stack / AI Web App',
+    platform: 'Web',
     accent: '#16A34A',
     github: 'https://github.com/kavierjogie/smart-pantry',
     demo: 'https://smart-pantry-kohl.vercel.app/',
@@ -65,12 +66,33 @@ export const PROJECTS = [
   },
 
   {
+    id: 8,
+    title: 'Netball Statistics App',
+    description:
+      'A native Android application that lets netball coaches record live match statistics, manage players and substitutions, and review post-match visual feedback through per-player charts broken down by half.',
+    tags: ['Java', 'Android SDK', 'Supabase', 'Retrofit', 'MPAndroidChart', 'Material Components'],
+    category: 'Mobile / Android App',
+    platform: 'Android',
+    accent: '#F97316',
+    github: 'https://github.com/kavierjogie/Netball-App-V2',
+    featured: true,
+    demoVideo: '/demos/netball-demo.mp4',
+    image: '/projects/netball-statistics-app.png',
+    details: {
+      overview: 'Built for netball coaches to capture what happens on court as it happens. Coaches set up a game with court positions and bench players, log player actions and substitutions from a live game screen, and then review a match analysis with per-player statistics split by half.',
+      architecture: 'A native Android app written in Java (min SDK 24, target SDK 34) and built with Gradle. Data for coaches, players, games, and player actions is stored in Supabase and accessed through its PostgREST API using Retrofit, Gson, and OkHttp. The interface uses Material Components, and MPAndroidChart renders the post-match charts.',
+      challenges: 'Designing a live game screen that lets coaches log actions and substitutions quickly without losing track of court positions, and modelling player actions so they can be aggregated into per-player, per-half statistics for post-match analysis.',
+    }
+  },
+
+  {
     id: 2,
     title: 'AI Workplace Productivity Assistant',
     description:
       'An AI-powered web application designed to automate repetitive workplace tasks such as writing emails, summarizing meeting notes, planning schedules, and assisting with research. Built to improve productivity through intelligent task automation and structured AI tools.',
     tags: ['React', 'AI', 'TypeScript', 'Prompt Engineering', 'Vite'],
     category: 'Web App',
+    platform: 'Web',
     accent: '#7C3AED',
     github: 'https://github.com/kavierjogie007/intelligent-aid-desk',
     demo: 'https://kavier-jogie-ai-productivity-assistant.lovable.app',
@@ -90,6 +112,7 @@ export const PROJECTS = [
       'An AI-powered career mentor chatbot designed specifically for South African high-school pupils. It helps learners explore career options, understand subject and qualification requirements, discover study opportunities, and make informed career decisions.',
     tags: ['React', 'TypeScript', 'AI', 'Chatbot', 'Tailwind CSS', 'South African Education'],
     category: 'AI / Web Application',
+    platform: 'Web',
     accent: '#10B981',
     github: 'https://github.com/kavierjogie/CareerBuddySA',
     demo: 'https://grade-genius-mentor.lovable.app',
@@ -108,6 +131,7 @@ export const PROJECTS = [
       'An AI-powered content platform that fans one idea out into platform-ready content — LinkedIn posts, Instagram captions, TikTok scripts, X posts, blog articles, promo copy, and hashtags — with a built-in prompt library and content calendar.',
     tags: ['React', 'TypeScript', 'Vite', 'Groq AI', 'Vercel Functions', 'Tailwind CSS'],
     category: 'AI / Web Application',
+    platform: 'Web',
     accent: '#EC4899',
     github: 'https://github.com/kavierjogie/fanout-studio',
     demo: 'https://fanout-studio.vercel.app/',
@@ -126,6 +150,7 @@ export const PROJECTS = [
       'A production-ready healthcare patient feedback platform built for the Western Cape Department of Health, featuring real-time AI sentiment analysis, hospital KPI dashboards, and automated PDF reporting.',
     tags: ['Next.js 14', 'TypeScript', 'Supabase', 'PostgreSQL', 'Groq AI', 'Recharts', 'jsPDF'],
     category: 'Healthcare IT / Web App',
+    platform: 'Web',
     accent: '#0284C7',
     github: 'https://github.com/kavierjogie/wc-hospital-feedback',
     demo: 'https://wc-hospital-feedback.vercel.app/',
@@ -145,6 +170,7 @@ export const PROJECTS = [
       'A full-stack personal finance and budgeting web application featuring AI-driven spending pattern analysis, a contextual financial chatbot assistant, savings goal tracking, and recurring expense automation.',
     tags: ['Next.js 14', 'TypeScript', 'Supabase', 'Groq AI', 'Recharts', 'jsPDF', 'Tailwind CSS'],
     category: 'FinTech / Web App',
+    platform: 'Web',
     accent: '#F59E0B',
     github: 'https://github.com/kavierjogie/ai-budget-planner',
     demo: 'https://ai-budget-planner-wine.vercel.app/',
@@ -154,24 +180,6 @@ export const PROJECTS = [
       overview: 'A full-stack financial companion designed for young adults to track income and expenses, receive automated AI insights on spending habits, converse with a financial chatbot assistant, and monitor savings goals.',
       architecture: 'Leverages Next.js 14 (App Router), TypeScript, and Supabase Auth & PostgreSQL. Uses Groq Cloud LLM APIs for spending insights and chat assistance, Recharts for visual trend forecasting, and jsPDF for monthly spending reports.',
       challenges: 'Structuring contextual prompts that feed financial history securely to the AI model while preventing hallucinations, and implementing automatic monthly carry-forward logic for recurring expenses.',
-    }
-  },
-
-  {
-    id: 8,
-    title: 'Netball Statistics App',
-    description:
-      'A native Android application that lets netball coaches record live match statistics, manage players and substitutions, and review post-match visual feedback through per-player charts broken down by half.',
-    tags: ['Java', 'Android SDK', 'Supabase', 'Retrofit', 'MPAndroidChart', 'Material Components'],
-    category: 'Mobile / Android App',
-    accent: '#F97316',
-    github: 'https://github.com/kavierjogie/Netball-App-V2',
-    demoVideo: '/demos/netball-demo.mp4',
-    image: '/projects/netball-statistics-app.png',
-    details: {
-      overview: 'Built for netball coaches to capture what happens on court as it happens. Coaches set up a game with court positions and bench players, log player actions and substitutions from a live game screen, and then review a match analysis with per-player statistics split by half.',
-      architecture: 'A native Android app written in Java (min SDK 24, target SDK 34) and built with Gradle. Data for coaches, players, games, and player actions is stored in Supabase and accessed through its PostgREST API using Retrofit, Gson, and OkHttp. The interface uses Material Components, and MPAndroidChart renders the post-match charts.',
-      challenges: 'Designing a live game screen that lets coaches log actions and substitutions quickly without losing track of court positions, and modelling player actions so they can be aggregated into per-player, per-half statistics for post-match analysis.',
     }
   },
 ];
