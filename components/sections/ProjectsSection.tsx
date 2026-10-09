@@ -220,21 +220,8 @@ export default function ProjectsSection() {
               onClick={(event) => event.stopPropagation()}
               className="relative w-full max-w-2xl bg-bg-primary border border-border-subtle rounded-2xl overflow-hidden shadow-card-hover z-10 flex flex-col max-h-[calc(100dvh-1.5rem)] sm:max-h-[85vh]"
             >
-              {/* Image banner or decorative top bar */}
-              {selectedProject.image ? (
-                <motion.div
-                  className="relative aspect-[16/7] w-full shrink-0 bg-bg-elevated"
-                >
-                  <Image
-                    src={selectedProject.image}
-                    alt={selectedProject.title}
-                    fill
-                    sizes="(min-width: 672px) 672px, 100vw"
-                    className="object-cover object-top"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent" />
-                </motion.div>
-              ) : (
+              {/* Decorative top bar when there's no screenshot */}
+              {!selectedProject.image && (
                 <motion.div className="shrink-0">
                   <div
                     className="h-28 w-full"
@@ -254,18 +241,32 @@ export default function ProjectsSection() {
 
               {/* Content Panel */}
               <div className="p-4 sm:p-6 md:p-8 overflow-y-auto space-y-5 sm:space-y-6 flex-1 overscroll-contain">
-                <div>
-                  <span
-                    className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border inline-block mb-3"
-                    style={{ color: selectedProject.accent, borderColor: `${selectedProject.accent}40`, background: `${selectedProject.accent}10` }}
-                  >
-                    {selectedProject.category}
-                  </span>
-                  <motion.h3
-                    className="font-display font-bold text-text-primary text-2xl md:text-3xl leading-tight"
-                  >
-                    {selectedProject.title}
-                  </motion.h3>
+                {/* Header: compact screenshot beside the title (stacked on mobile) */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-5 sm:pr-10">
+                  {selectedProject.image && (
+                    <div className="relative w-full sm:w-56 aspect-[16/7] shrink-0 rounded-xl overflow-hidden border border-border-subtle bg-bg-elevated">
+                      <Image
+                        src={selectedProject.image}
+                        alt={selectedProject.title}
+                        fill
+                        sizes="(min-width: 640px) 224px, 100vw"
+                        className="object-cover object-top"
+                      />
+                    </div>
+                  )}
+                  <div className="min-w-0">
+                    <span
+                      className="text-[10px] font-mono tracking-widest uppercase px-2.5 py-1 rounded-full border inline-block mb-3"
+                      style={{ color: selectedProject.accent, borderColor: `${selectedProject.accent}40`, background: `${selectedProject.accent}10` }}
+                    >
+                      {selectedProject.category}
+                    </span>
+                    <motion.h3
+                      className="font-display font-bold text-text-primary text-2xl md:text-3xl leading-tight"
+                    >
+                      {selectedProject.title}
+                    </motion.h3>
+                  </div>
                 </div>
 
                 {/* Tab select bar */}
