@@ -8,6 +8,12 @@ import SectionHeading from '@/components/ui/SectionHeading';
 import { PROJECTS } from '@/lib/data';
 import Image from 'next/image';
 
+/* Accent-coloured button: colours come in as CSS vars so Tailwind hover classes can override them */
+const ACCENT_BTN =
+  'text-[var(--c)] bg-[var(--bg)] border border-[var(--bd)] hover:bg-[var(--bg-h)] hover:border-[var(--c)] hover:shadow-[0_0_14px_var(--bd)] transition-all duration-200';
+const accentVars = (accent: string) =>
+  ({ '--c': accent, '--bg': `${accent}15`, '--bg-h': `${accent}30`, '--bd': `${accent}50` }) as React.CSSProperties;
+
 /* Decorative placeholder image for each project */
 function ProjectImagePlaceholder({ accent, category }: { accent: string; category: string }) {
   return (
@@ -150,8 +156,8 @@ export default function ProjectsSection() {
                 <button
                   type="button"
                   onClick={() => setVideoSrc(project.demoVideo!)}
-                  className="flex items-center gap-1.5 text-xs font-semibold rounded-lg py-2 px-3 transition-all duration-200"
-                  style={{ color: project.accent, background: `${project.accent}15`, border: `1px solid ${project.accent}30` }}
+                  className={`flex items-center gap-1.5 text-xs font-semibold rounded-lg py-2 px-3 ${ACCENT_BTN}`}
+                  style={accentVars(project.accent)}
                 >
                   <Play size={13} /> Watch Demo
                 </button>
@@ -160,8 +166,8 @@ export default function ProjectsSection() {
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs font-semibold rounded-lg py-2 px-3 transition-all duration-200"
-                  style={{ color: project.accent, background: `${project.accent}15`, border: `1px solid ${project.accent}30` }}
+                  className={`flex items-center gap-1.5 text-xs font-semibold rounded-lg py-2 px-3 ${ACCENT_BTN}`}
+                  style={accentVars(project.accent)}
                 >
                   <ExternalLink size={13} /> Live Demo
                 </a>
@@ -338,8 +344,8 @@ export default function ProjectsSection() {
                   <button
                     type="button"
                     onClick={() => setVideoSrc(selectedProject.demoVideo!)}
-                    className="flex items-center gap-1.5 text-xs font-semibold flex-1 justify-center transition-all duration-200 rounded-lg py-2.5 px-4"
-                    style={{ color: selectedProject.accent, background: `${selectedProject.accent}15`, border: `1px solid ${selectedProject.accent}30` }}
+                    className={`flex items-center gap-1.5 text-xs font-semibold flex-1 justify-center rounded-lg py-2.5 px-4 ${ACCENT_BTN}`}
+                    style={accentVars(selectedProject.accent)}
                   >
                     <Play size={14} /> Live Demo
                   </button>
@@ -348,8 +354,8 @@ export default function ProjectsSection() {
                     href={selectedProject.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1.5 text-xs font-semibold flex-1 justify-center transition-all duration-200 rounded-lg py-2.5 px-4"
-                    style={{ color: selectedProject.accent, background: `${selectedProject.accent}15`, border: `1px solid ${selectedProject.accent}30` }}
+                    className={`flex items-center gap-1.5 text-xs font-semibold flex-1 justify-center rounded-lg py-2.5 px-4 ${ACCENT_BTN}`}
+                    style={accentVars(selectedProject.accent)}
                   >
                     <ExternalLink size={14} /> Live Demo
                   </a>
