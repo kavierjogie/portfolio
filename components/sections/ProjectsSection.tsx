@@ -18,7 +18,7 @@ const accentVars = (accent: string) =>
 function ProjectImagePlaceholder({ accent, category }: { accent: string; category: string }) {
   return (
     <div
-      className="relative h-44 rounded-xl overflow-hidden mb-6 flex items-center justify-center shrink-0"
+      className="relative aspect-[16/7] rounded-xl overflow-hidden mb-5 sm:mb-6 flex items-center justify-center shrink-0"
       style={{ background: `linear-gradient(135deg, ${accent}10, ${accent}05)` }}
     >
       {/* Grid lines */}
@@ -92,12 +92,13 @@ export default function ProjectsSection() {
             {project.image ? (
               <motion.div 
                 layoutId={`card-image-${project.id}`}
-                className="relative h-36 sm:h-44 rounded-xl overflow-hidden mb-5 sm:mb-6 shrink-0"
+                className="relative aspect-[16/7] rounded-xl overflow-hidden mb-5 sm:mb-6 shrink-0 bg-bg-elevated"
               >
                 <Image
                   src={project.image}
                   alt={project.title}
                   fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover object-top"
                 />
               </motion.div>
@@ -222,15 +223,16 @@ export default function ProjectsSection() {
               {/* Image banner or decorative top bar */}
               {selectedProject.image ? (
                 <motion.div
-                  className="relative h-60 w-full shrink-0"
+                  className="relative aspect-[16/7] w-full shrink-0 bg-bg-elevated"
                 >
                   <Image
                     src={selectedProject.image}
                     alt={selectedProject.title}
                     fill
-                    className="object-cover"
+                    sizes="(min-width: 672px) 672px, 100vw"
+                    className="object-cover object-top"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-bg-primary/45 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-primary via-transparent to-transparent" />
                 </motion.div>
               ) : (
                 <motion.div className="shrink-0">
