@@ -156,6 +156,23 @@ export const PROJECTS = [
       challenges: 'Structuring contextual prompts that feed financial history securely to the AI model while preventing hallucinations, and implementing automatic monthly carry-forward logic for recurring expenses.',
     }
   },
+
+  {
+    id: 8,
+    title: 'Netball Statistics App',
+    description:
+      'A native Android application that lets netball coaches record live match statistics, manage players and substitutions, and review post-match visual feedback through per-player charts broken down by half.',
+    tags: ['Java', 'Android SDK', 'Supabase', 'Retrofit', 'MPAndroidChart', 'Material Components'],
+    category: 'Mobile / Android App',
+    accent: '#F97316',
+    github: 'https://github.com/kavierjogie/Netball-App-V2',
+    demoVideo: '/demos/netball-demo.mp4',
+    details: {
+      overview: 'Built for netball coaches to capture what happens on court as it happens. Coaches set up a game with court positions and bench players, log player actions and substitutions from a live game screen, and then review a match analysis with per-player statistics split by half.',
+      architecture: 'A native Android app written in Java (min SDK 24, target SDK 34) and built with Gradle. Data for coaches, players, games, and player actions is stored in Supabase and accessed through its PostgREST API using Retrofit, Gson, and OkHttp. The interface uses Material Components, and MPAndroidChart renders the post-match charts.',
+      challenges: 'Designing a live game screen that lets coaches log actions and substitutions quickly without losing track of court positions, and modelling player actions so they can be aggregated into per-player, per-half statistics for post-match analysis.',
+    }
+  },
 ];
 
 export const EXPERIENCE = [

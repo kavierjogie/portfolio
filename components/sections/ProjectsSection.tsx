@@ -1,8 +1,8 @@
 'use client';
 
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Github, ExternalLink, X, Cpu, Layers, AlertCircle } from 'lucide-react';
+import { Github, ExternalLink, X, Cpu, Layers, AlertCircle, Play } from 'lucide-react';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import SectionHeading from '@/components/ui/SectionHeading';
 import { PROJECTS } from '@/lib/data';
@@ -45,6 +45,14 @@ export default function ProjectsSection() {
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [isClosing, setIsClosing] = useState(false);
   const [activeTab, setActiveTab] = useState<'overview' | 'architecture' | 'challenges'>('overview');
+  const [videoSrc, setVideoSrc] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (!videoSrc) return;
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setVideoSrc(null);
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [videoSrc]);
 
   const selectedProject = PROJECTS.find((p) => p.id === selectedId);
   const closeModal = () => {
@@ -284,16 +292,68 @@ export default function ProjectsSection() {
                 >
                   <Github size={14} /> GitHub
                 </a>
-                <a
-                  href={selectedProject.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-1.5 text-xs font-semibold flex-1 justify-center transition-all duration-200 rounded-lg py-2.5 px-4"
-                  style={{ color: selectedProject.accent, background: `${selectedProject.accent}15`, border: `1px solid ${selectedProject.accent}30` }}
-                >
-                  <ExternalLink size={14} /> Live Demo
-                </a>
+                {selectedProject.demoVideo ? (
+                  <button
+                    type="button"
+                    onClick={() => setVideoSrc(selectedProject.demoVideo!)}
+                    className="flex items-center gap-1.5 text-xs font-semibold flex-1 justify-center transition-all duration-200 rounded-lg py-2.5 px-4"
+                    style={{ color: selectedProject.accent, background: `${selectedProject.accent}15`, border: `1px solid ${selectedProject.accent}30` }}
+                  >
+                    <Play size={14} /> Live Demo
+                  </button>
+                ) : (
+                  <a
+                    href={selectedProject.demo}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1.5 text-xs font-semibold flex-1 justify-center transition-all duration-200 rounded-lg py-2.5 px-4"
+                    style={{ color: selectedProject.accent, background: `${selectedProject.accent}15`, border: `1px solid ${selectedProject.accent}30` }}
+                  >
+                    <ExternalLink size={14} /> Live Demo
+                  </a>
+                )}
               </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Demo Video Modal */}
+      <AnimatePresence>
+        {videoSrc && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Project demo video"
+            className="fixed inset-0 z-[60] flex items-center justify-center p-4 sm:p-6 md:p-10"
+          >
+            <div onClick={() => setVideoSrc(null)} className="fixed inset-0 bg-black/90 backdrop-blur-md" />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="relative z-10 flex flex-col items-center"
+            >
+              <button
+                onClick={() => setVideoSrc(null)}
+                aria-label="Close demo video"
+                autoFocus
+                className="absolute -top-3 -right-3 z-20 p-2 bg-black/80 hover:bg-black border border-border-subtle hover:border-accent-cyan text-text-secondary hover:text-accent-cyan rounded-full transition-all duration-200"
+              >
+                <X size={18} />
+              </button>
+              {/* Sized to the video's own aspect ratio, capped to the viewport (works for portrait phone recordings too) */}
+              <video
+                src={videoSrc}
+                controls
+                autoPlay
+                playsInline
+                preload="metadata"
+                className="block max-h-[calc(100dvh-3rem)] sm:max-h-[85vh] max-w-full w-auto h-auto rounded-2xl border border-border-subtle bg-black shadow-card-hover"
+              />
             </motion.div>
           </motion.div>
         )}
