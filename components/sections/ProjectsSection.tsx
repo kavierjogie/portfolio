@@ -160,7 +160,7 @@ export default function ProjectsSection() {
                   className={`flex items-center gap-1.5 text-xs font-semibold rounded-lg py-2 px-3 ${ACCENT_BTN}`}
                   style={accentVars(project.accent)}
                 >
-                  <Play size={13} /> Watch Demo
+                  <Play size={13} /> Live Demo
                 </button>
               ) : (
                 <a
