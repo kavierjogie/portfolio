@@ -167,6 +167,7 @@ export const PROJECTS = [
     accent: '#F97316',
     github: 'https://github.com/kavierjogie/Netball-App-V2',
     demoVideo: '/demos/netball-demo.mp4',
+    image: '/projects/netball-statistics-app.png',
     details: {
       overview: 'Built for netball coaches to capture what happens on court as it happens. Coaches set up a game with court positions and bench players, log player actions and substitutions from a live game screen, and then review a match analysis with per-player statistics split by half.',
       architecture: 'A native Android app written in Java (min SDK 24, target SDK 34) and built with Gradle. Data for coaches, players, games, and player actions is stored in Supabase and accessed through its PostgREST API using Retrofit, Gson, and OkHttp. The interface uses Material Components, and MPAndroidChart renders the post-match charts.',
