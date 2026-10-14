@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import SectionWrapper from '@/components/ui/SectionWrapper';
 import SectionHeading from '@/components/ui/SectionHeading';
@@ -34,6 +35,22 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
+        {/* Right: Photo (original file, sized via CSS only) */}
+        <motion.div
+          variants={fadeUp}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true }}
+          className="relative mx-auto w-full max-w-[280px] sm:max-w-xs lg:max-w-sm aspect-[4/5] overflow-hidden rounded-lg border border-border-subtle shadow-cyan-glow"
+        >
+          <Image
+            src="/kavier-jogie.jpeg"
+            alt="Kavier Jogie at his Nelson Mandela University graduation"
+            fill
+            sizes="(min-width: 1024px) 384px, (min-width: 640px) 320px, 280px"
+            className="object-cover object-[50%_25%]"
+          />
+        </motion.div>
       </div>
     </SectionWrapper>
   );
