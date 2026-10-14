@@ -44,7 +44,7 @@ export default function AboutSection() {
           className="relative mx-auto w-full max-w-[280px] sm:max-w-xs lg:max-w-sm aspect-[4/5] overflow-hidden rounded-lg border border-border-subtle shadow-cyan-glow"
         >
           <Image
-            src="/kavier-jogie.jpeg"
+            src="/kavier-jogie-graduation.jpeg"
             alt="Kavier Jogie at his Nelson Mandela University graduation"
             fill
             sizes="(min-width: 1024px) 384px, (min-width: 640px) 320px, 280px"
