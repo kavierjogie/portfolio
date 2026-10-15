@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import SectionWrapper from '@/components/ui/SectionWrapper';
-import { CERTIFICATIONS, TIMELINE } from '@/lib/data';
+import { CERTIFICATIONS, EDUCATION, TIMELINE } from '@/lib/data';
 import { cn } from '@/lib/utils';
 
 type TimelineItemData = {
@@ -27,6 +27,7 @@ type TimelineItemData = {
   description?: string;
   bullets?: string[];
   technologies?: string[];
+  subjects?: string[];
   link?: string;
   icon: 'work' | 'education' | 'certification';
 };
@@ -48,36 +49,15 @@ function buildTimelineData() {
     })),
   ).reverse();
 
-  const educationByKey = new Map<string, TimelineItemData>();
-  TIMELINE.forEach((phase) => {
-    if (!phase.education) return;
-
-    const education = phase.education;
-    const key = `${education.institution}-${education.qualification}-${education.period}`;
-    const existing = educationByKey.get(key);
-    const phaseDescription = `${phase.label}: ${phase.summary}`;
-    const modules = [...(education.modules ?? [])];
-
-    if (existing) {
-      existing.description = `${existing.description} ${phaseDescription}`;
-      existing.bullets = Array.from(new Set([...(existing.bullets ?? []), ...modules]));
-      existing.technologies = Array.from(new Set([...(existing.technologies ?? []), ...phase.tools.map((tool) => tool.name)]));
-    } else {
-      educationByKey.set(key, {
-        id: key,
-        title: education.qualification,
-        organization: education.institution,
-        date: education.period,
-        meta: education.location,
-        description: phaseDescription,
-        bullets: education.activities ? [education.activities, ...modules] : modules,
-        technologies: phase.tools.map((tool) => tool.name),
-        icon: 'education',
-      });
-    }
-  });
-
-  const education = Array.from(educationByKey.values()).reverse();
+  const education: TimelineItemData[] = EDUCATION.map((entry) => ({
+    id: `${entry.institution}-${entry.qualification}`,
+    title: entry.qualification,
+    organization: entry.institution,
+    date: entry.period,
+    meta: entry.location,
+    subjects: entry.modules,
+    icon: 'education',
+  }));
   const excludedTimelineCertifications = new Set([
     'Artificial Intelligence Bootcamp (AI)',
     'Google AI Essentials',
@@ -196,6 +176,21 @@ function TimelineItem({ item, defaultExpanded = false }: { item: TimelineItemDat
                       {technology}
                     </span>
                   ))}
+                </div>
+              )}
+
+              {item.subjects && item.subjects.length > 0 && (
+                <div>
+                  <p className="mb-2 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-text-muted">
+                    <BookOpen size={13} className="text-accent-cyan" /> Subjects
+                  </p>
+                  <div className="flex flex-wrap gap-1.5">
+                    {item.subjects.map((subject) => (
+                      <span key={subject} className="rounded-md border border-border-subtle bg-bg-primary/60 px-2 py-1 font-mono text-[10px] text-text-secondary">
+                        {subject}
+                      </span>
+                    ))}
+                  </div>
                 </div>
               )}
 

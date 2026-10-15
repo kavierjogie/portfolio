@@ -230,11 +230,6 @@ export const EXPERIENCE = [
   },
 ];
 
-export interface TimelineTool {
-  name: string;
-  icon: string;
-}
-
 export interface TimelineExperience {
   title: string;
   organization?: string;
@@ -248,105 +243,64 @@ export interface TimelineExperience {
   icon: string;
 }
 
-export interface TimelineEducation {
+export interface TimelinePhase {
+  year: string;
+  experiences: TimelineExperience[];
+}
+
+export interface Education {
   institution: string;
   qualification: string;
   period: string;
   location: string;
-  modules?: string[];
-  activities?: string;
+  modules: string[]; // leave empty to hide the subjects list
 }
 
-export interface TimelinePhase {
-  year: string;
-  label: string;
-  focus: string;
-  tagline: string;
-  education?: TimelineEducation;
-  experiences?: TimelineExperience[];
-  tools: TimelineTool[];
-  summary: string;
-}
+export const EDUCATION: Education[] = [
+  {
+    institution: 'Nelson Mandela University',
+    qualification: 'Bachelor of Science Honours (BScHons), Computer Science and Information Systems',
+    period: 'Feb 2025 — Dec 2025',
+    location: 'Gqeberha, South Africa',
+    modules: [
+      'Data Warehousing',
+      'Usability Engineering',
+      'Project Management',
+      'Advanced Functional Programming',
+      'Artificial Intelligence',
+      'E-Commerce',
+      'Evolutionary Computing',
+      'Virtual Reality',
+    ],
+  },
+  {
+    institution: 'Nelson Mandela University',
+    qualification: 'Bachelor of Science (BSc), Computer Science and Mathematical Statistics',
+    period: 'Feb 2022 — Dec 2024',
+    location: 'Gqeberha, South Africa',
+    modules: [],
+  },
+  {
+    institution: 'Pinelands High School',
+    qualification: 'National Senior Certificate (Matric)',
+    period: 'Jan 2017 — Dec 2021',
+    location: 'Cape Town, South Africa',
+    modules: [
+      'Information Technology',
+      'Mathematics',
+      'Physical Science',
+      'Accounting',
+      'Engineering Graphic Design',
+      'English Home Language',
+      'Afrikaans First Additional Language',
+      'Life Orientation',
+    ],
+  },
+];
 
 export const TIMELINE: TimelinePhase[] = [
   {
-    year: '2021',
-    label: 'Pre-University Foundations',
-    focus: 'School Custodian & IT Beginnings',
-    tagline: 'Pinelands High School Matric & IT Basics',
-    summary: 'Completed National Senior Certificate (Matric) with high marks in key technical and mathematical subjects, laying down the groundwork for a Computer Science path.',
-    education: {
-      institution: 'Pinelands High School',
-      qualification: 'National Senior Certificate (Matric)',
-      period: 'Jan 2017 — Dec 2021',
-      location: 'Cape Town, South Africa',
-      activities: 'Custodian',
-      modules: [
-        'Information Technology',
-        'Mathematics',
-        'Physical Science',
-        'Accounting',
-        'Engineering Graphic Design',
-        'English Home Language',
-        'Afrikaans First Additional Language',
-        'Life Orientation',
-      ],
-    },
-    tools: [
-      { name: 'Delphi', icon: '💻' },
-      { name: 'Microsoft Excel', icon: '📊' },
-      { name: 'Microsoft Word', icon: '📄' },
-    ],
-  },
-  {
-    year: '2022',
-    label: 'BSc First Year',
-    focus: 'Algorithms & Database Basics',
-    tagline: 'Laying procedural foundations at Nelson Mandela University',
-    summary: 'Began BSc studies, diving into basic programming syntax, procedural constructs, data visualization, and database operations.',
-    education: {
-      institution: 'Nelson Mandela University',
-      qualification: 'Bachelor of Science (BSc), Computer Science and Mathematical Statistics',
-      period: 'Feb 2022 — Dec 2024',
-      location: 'Gqeberha, South Africa',
-    },
-    tools: [
-      { name: 'Java', icon: '☕' },
-      { name: 'Delphi', icon: '🧰' },
-      { name: 'Microsoft Access', icon: '🗃' },
-      { name: 'Microsoft PowerPoint', icon: '📽️' },
-    ],
-  },
-  {
-    year: '2023',
-    label: 'BSc Second Year',
-    focus: 'Object-Oriented & Systems Design',
-    tagline: 'Exploring systems architecture and complex OOP systems',
-    summary: 'Accelerated technical mastery through C# systems analysis and building complex relational database applications.',
-    education: {
-      institution: 'Nelson Mandela University',
-      qualification: 'Bachelor of Science (BSc), Computer Science and Mathematical Statistics',
-      period: 'Feb 2022 — Dec 2024',
-      location: 'Gqeberha, South Africa',
-    },
-    tools: [
-      { name: 'C#', icon: '#' },
-      { name: 'SQL Server', icon: '🗄️' },
-      { name: 'Microsoft Visio', icon: '📐' },
-    ],
-  },
-  {
     year: '2024',
-    label: '2024 (Undergrad Focus)',
-    focus: 'Tutoring & Mathematics Complete',
-    tagline: 'Undergraduate courses, programming basics, and tutoring role',
-    summary: 'Completed undergraduate curriculum focusing on advanced programming paradigms and statistics, while starting to support junior students in their programming journey.',
-    education: {
-      institution: 'Nelson Mandela University',
-      qualification: 'Bachelor of Science (BSc), Computer Science and Mathematical Statistics',
-      period: 'Feb 2022 — Dec 2024',
-      location: 'Gqeberha, South Africa',
-    },
     experiences: [
       {
         title: 'Student Assistant (Programming Support)',
@@ -357,35 +311,9 @@ export const TIMELINE: TimelinePhase[] = [
         icon: '🧑‍🏫',
       },
     ],
-    tools: [
-      { name: 'Java', icon: '☕' },
-      { name: 'C#', icon: '#' },
-      { name: 'SQL Server', icon: '🗄️' },
-      { name: 'MATLAB', icon: '📊' },
-    ],
   },
   {
     year: '2025',
-    label: '2025 (Honours & Tech Lead)',
-    focus: 'Distributed Systems & Leadership',
-    tagline: 'Honours courses and 3rd-year design teams leadership',
-    summary: 'Thrived in Honours level study covering distributed systems and advanced algorithms. Designed and delivered a real-time analytics app for coaches, while taking on multiple student assistant leadership roles.',
-    education: {
-      institution: 'Nelson Mandela University',
-      qualification: 'Bachelor of Science Honours (BScHons), Computer Science and Information Systems',
-      period: 'Feb 2025 — Dec 2025',
-      location: 'Gqeberha, South Africa',
-      modules: [
-        'Data Warehousing',
-        'Usability Engineering',
-        'Project Management',
-        'Advanced Functional Programming',
-        'Artificial Intelligence',
-        'E-Commerce',
-        'Evolutionary Computing',
-        'Virtual Reality',
-      ],
-    },
     experiences: [
       {
         title: 'Student Assistant (Tech Lead)',
@@ -412,20 +340,9 @@ export const TIMELINE: TimelinePhase[] = [
         icon: '🔐',
       },
     ],
-    tools: [
-      { name: 'R', icon: '📈' },
-      { name: 'F#', icon: '#' },
-      { name: 'Supabase', icon: '⚡' },
-      { name: 'Java', icon: '☕' },
-      { name: 'Android Studio', icon: '📱' },
-    ],
   },
   {
     year: '2026',
-    label: 'Professional Integration',
-    focus: 'BSc Honours Graduate',
-    tagline: 'Deploying advanced systems and AI workplace products',
-    summary: 'Leveraged Honours academic findings to build premium software products including AI assistants and data platforms, moving into full-stack software engineering.',
     experiences: [
       {
         title: 'AI Skills Acceleration Programme Participant',
@@ -459,13 +376,6 @@ export const TIMELINE: TimelinePhase[] = [
         skills: ['Software Development', 'Artificial Intelligence (AI)', 'Web Development', 'Git / GitHub', 'Programming'],
         icon: '💻',
       },
-    ],
-    tools: [
-      { name: 'React', icon: '⚛️' },
-      { name: 'Next.js', icon: '⚡' },
-      { name: 'TypeScript', icon: '📘' },
-      { name: 'Git', icon: '🔀' },
-      { name: 'GitHub', icon: '🐙' },
     ],
   },
 ];

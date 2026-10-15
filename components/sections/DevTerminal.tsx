@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from 'react';
 import { Terminal, Cpu } from 'lucide-react';
-import { PERSONAL, SKILLS, PROJECTS, EXPERIENCE, TIMELINE } from '@/lib/data';
+import { PERSONAL, SKILLS, PROJECTS, EXPERIENCE, EDUCATION } from '@/lib/data';
 
 interface LogLine {
   type: 'input' | 'output' | 'error' | 'success';
@@ -75,8 +75,8 @@ export default function DevTerminal() {
         });
         break;
       case 'education':
-        TIMELINE.forEach(({ education: edu }) => {
-          if (edu) newLogs.push({ type: 'success', text: `🎓 ${edu.qualification} — ${edu.institution} (${edu.period})` });
+        EDUCATION.forEach((edu) => {
+          newLogs.push({ type: 'success', text: `🎓 ${edu.qualification} — ${edu.institution} (${edu.period})` });
         });
         break;
       case 'contact':
