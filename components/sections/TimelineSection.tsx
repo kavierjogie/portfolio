@@ -28,6 +28,7 @@ type TimelineItemData = {
   bullets?: string[];
   technologies?: string[];
   subjects?: string[];
+  subjectsLabel?: string;
   link?: string;
   icon: 'work' | 'education' | 'certification';
 };
@@ -56,6 +57,7 @@ function buildTimelineData() {
     date: entry.period,
     meta: entry.location,
     subjects: entry.modules,
+    subjectsLabel: entry.institution.includes('University') ? 'Modules' : 'Subjects',
     icon: 'education',
   }));
   const excludedTimelineCertifications = new Set([
@@ -182,7 +184,7 @@ function TimelineItem({ item, defaultExpanded = false }: { item: TimelineItemDat
               {item.subjects && item.subjects.length > 0 && (
                 <div>
                   <p className="mb-2 flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-text-muted">
-                    <BookOpen size={13} className="text-accent-cyan" /> Subjects
+                    <BookOpen size={13} className="text-accent-cyan" /> {item.subjectsLabel}
                   </p>
                   <div className="flex flex-wrap gap-1.5">
                     {item.subjects.map((subject) => (
